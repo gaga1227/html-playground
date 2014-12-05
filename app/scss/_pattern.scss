@@ -1,0 +1,42 @@
+/* common */
+.app-pattern,
+[class^="app-pattern-"] {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* pattern container */
+.app-pattern {
+	top: 0;
+	min-width: 1024px;
+	height: 100%;
+}
+
+/* pattern sections */
+.app-pattern-editor [ui-ace] {
+	top: 0;
+	height: 300px;
+}
+.app-pattern-display {
+	top: 300px;
+	bottom: 0;
+	background: red;
+	border: 0;
+
+	//iframe
+	iframe {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: 0;
+		background: yellow;
+		border: 0;
+	}
+}
