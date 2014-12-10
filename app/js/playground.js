@@ -8,13 +8,13 @@ angular.module('playground',
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'partials/pattern.html',
-				controller: 'PatternCtrl'
+				templateUrl: 'partials/home.html',
+				controller: 'HomeController'
 			})
-			.state('jade', {
-				url: '/jade',
-				templateUrl: 'partials/jade.html',
-				controller: 'MainCtrl'
+			.state('pattern', {
+				url: '/pattern:id',
+				templateUrl: 'partials/pattern.html',
+				controller: 'PatternController'
 			});
 		$urlRouterProvider.otherwise('/');
 	})
