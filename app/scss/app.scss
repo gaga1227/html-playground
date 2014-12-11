@@ -1,1 +1,6 @@
-@import "pattern.scss";
+//UI modules
+@import "_vars.scss";
+@import "_buttons.scss";
+
+//app modules
+@import "_pattern.scss";

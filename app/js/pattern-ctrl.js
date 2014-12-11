@@ -1,5 +1,7 @@
 angular.module('playground')
-.controller('PatternController', ['$scope', '$sce', 'patternService', function($scope, $sce, patternService) {
+.controller('PatternController', [
+	'$scope', '$sce', 'patternService', 'staticFactory',
+	function($scope, $sce, patternService, staticFactory) {
 
 	// ace editor init and config
 	// -------------------------------------------------------------------------------------------
@@ -21,6 +23,7 @@ angular.module('playground')
 		//pass ref to scope
 		$scope.editor = _editor;
 	};
+
 	// on change
 	$scope.aceChanged = function(e) {
 		// console.log(e);
@@ -29,7 +32,10 @@ angular.module('playground')
 	// view model data
 	// -------------------------------------------------------------------------------------------
 
-	// repo data
+	//input data for editor
+	$scope.input = '';
+
+	// repo
 	$scope.repo = {
 		"id": "BS331",
 		"name": "Bootstrap 3.3.1",
@@ -40,7 +46,45 @@ angular.module('playground')
 		]
 	};
 
-	// Load pattern data
+	// view methods
+	// -------------------------------------------------------------------------------------------
+
+	//save to cloud
+	$scope.save = function(){
+		//exit
+		if ($scope.pattern.html == $scope.input) {
+			console.log('[pattern.save]: ', 'No updates to input, exit.');
+			return false;
+		}
+		//prep data
+		$scope.input = style_html($scope.input, staticFactory.styleHtmlOptions);
+		$scope.pattern.html = $scope.input;
+		//call pattern service
+		var request = patternService.putPattern($scope.pattern.id, $scope.pattern);
+		request.then(function(){
+			console.log('[pattern.save]: ', 'updates saved in cloud!');
+		}, function(){
+
+		});
+	};
+
+	//revert to last saved version
+	$scope.revert = function(){
+		//exit
+		if ($scope.input == $scope.pattern.html) {
+			console.log('[pattern.revert]: ', 'No updates to input, exit.');
+			return false;
+		}
+		//revert input valur to stored model value
+		$scope.input = style_html($scope.pattern.html, staticFactory.styleHtmlOptions);
+
+		console.log('[pattern.revert]: ', 'reverted back to stored html value.');
+	};
+
+	// display pattern data
+	// -------------------------------------------------------------------------------------------
+
+	//load pattern data
 	patternService.getPattern('BS-001')
 		.then(function(result){
 			onPatternData(result.data);
@@ -49,26 +93,8 @@ angular.module('playground')
 
 		});
 
-
-	// handler - onPatternData
+	// load pattern data handler
 	function onPatternData(data){
-		//set scope data
-		$scope.pattern = data;
-
-		// inputs
-		// -------------------------------------------------------------------------------------------
-
-		//beautify stored html before display
-		var style_html_options = {
-			indent_char : '\t',
-			indent_size : 1,
-			max_char : 0
-		};
-		$scope.pattern.input = style_html($scope.pattern.html, style_html_options);
-
-		// display
-		// -------------------------------------------------------------------------------------------
-
 		//common vars
 		var $frame = $('#app-pattern-display');
 		var $frameHead = $frame.contents().find('head');
@@ -99,10 +125,16 @@ angular.module('playground')
 			$frameHead.append( getRepoFile(ele, 'css') );
 		});
 
-		//watch input value and translate to display
-		var cancelPatternInputWatch = $scope.$watch('pattern.input', function(){
+		//set scope data from result data
+		$scope.pattern = data;
+
+		//prep input data for editor
+		$scope.input = style_html($scope.pattern.html, staticFactory.styleHtmlOptions);
+
+		//watch input value and inject to display
+		var cancelPatternInputWatch = $scope.$watch('input', function(){
 			//inject to iframe
-			$frameBody.html($scope.pattern.input);
+			$frameBody.html($scope.input);
 		});
 
 		//clean up watch

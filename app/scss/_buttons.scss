@@ -1,0 +1,26 @@
+/*
+### btnIcon
+*/
+.btnIcon {
+	display: inline-block;
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+	color: #fff;
+	background: transparent;
+
+	font-size: 32px;
+	line-height: 60px;
+	text-align: center;
+
+	-webkit-transition: all $transSpeed $transEasing;
+	        transition: all $transSpeed $transEasing;
+
+	&:hover {
+		background: rgba(0,0,0,0.2);
+	}
+}

@@ -1,6 +1,19 @@
 <!-- pattern container -->
 <div class="app-pattern">
 	<!-- pattern editor -->
+	<div class="app-pattern-header" id="app-pattern-header_{{pattern.id}}">
+		<div class="utils"><!--
+		--><a href="#" class="btnIcon" title="Back to main"><i class="icon ion-grid"></i></a><!--
+		--></div>
+		<div class="utils"><!--
+			--><a href="" class="btnIcon" title="Save to cloud"
+				ng-click="save()"><i class="icon ion-ios-cloud-upload-outline"></i></a><!--
+			--><a href="" class="btnIcon" title="Revert changes"
+				ng-click="revert()"><i class="icon ion-ios-undo-outline"></i></a><!--
+		--></div>
+		<h1 class="heading">Pattern No. <span ng-bind="pattern.id"></span></h1>
+	</div>
+	<!-- pattern editor -->
 	<div class="app-pattern-editor" id="app-pattern-editor_{{pattern.id}}">
 		<div ui-ace="{
 			useWrapMode : true,
@@ -10,9 +23,8 @@
 			onLoad: aceLoaded,
 			onChange: aceChanged
 		}"
-		ng-model="pattern.input"></div>
+		ng-model="input"></div>
 	</div>
-
 	<!-- pattern display -->
 	<div class="app-pattern-display">
 		<iframe id="app-pattern-display"></iframe>
