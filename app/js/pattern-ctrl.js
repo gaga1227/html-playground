@@ -9,12 +9,7 @@ angular.module('playground')
 	// on load
 	$scope.aceLoaded = function(_editor) {
 		//options
-		_editor.setOptions({
-			// maxLines: 'Infinity',
-			vScrollBarAlwaysVisible: true,
-			showInvisibles: true,
-			fontSize: '16px'
-		});
+		_editor.setOptions(staticFactory.editorOptions);
 
 		//configure session
 		_editor.getSession()
@@ -57,8 +52,8 @@ angular.module('playground')
 			return false;
 		}
 		//prep data
-		$scope.input = style_html($scope.input, staticFactory.styleHtmlOptions);
-		$scope.pattern.html = $scope.input;
+		$scope.input = style_html($scope.input, staticFactory.beautifyHtmlOptions);
+		$scope.pattern.html = minify($scope.input, staticFactory.minifyHtmlOptions);
 		//call pattern service
 		var request = patternService.putPattern($scope.pattern.id, $scope.pattern);
 		request.then(function(){
@@ -76,7 +71,7 @@ angular.module('playground')
 			return false;
 		}
 		//revert input valur to stored model value
-		$scope.input = style_html($scope.pattern.html, staticFactory.styleHtmlOptions);
+		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
 
 		console.log('[pattern.revert]: ', 'reverted back to stored html value.');
 	};
@@ -121,6 +116,7 @@ angular.module('playground')
 		}
 
 		//inject repo css dependencies
+		$frameHead.empty();
 		$.each($scope.repo.css, function(idx, ele){
 			$frameHead.append( getRepoFile(ele, 'css') );
 		});
@@ -129,7 +125,7 @@ angular.module('playground')
 		$scope.pattern = data;
 
 		//prep input data for editor
-		$scope.input = style_html($scope.pattern.html, staticFactory.styleHtmlOptions);
+		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
 
 		//watch input value and inject to display
 		var cancelPatternInputWatch = $scope.$watch('input', function(){

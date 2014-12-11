@@ -9,11 +9,26 @@ angular.module('playground')
 		reposPath: 'repos',
 		suffix: '.json',
 
-		//HTML beautify params
-		styleHtmlOptions : {
+		//ace editor options
+		editorOptions: {
+			// maxLines: 'Infinity',
+			vScrollBarAlwaysVisible: true,
+			showInvisibles: true,
+			fontSize: '16px'
+		},
+
+		//HTML beautify/minify params
+		beautifyHtmlOptions : {
 			indent_char : '\t',
 			indent_size : 1,
 			max_char : 0
+		},
+		minifyHtmlOptions : {
+			removeCDATASectionsFromCDATA: true,
+			collapseWhitespace : true,
+			// conservativeCollapse : true,
+			collapseBooleanAttributes : true,
+			removeIgnored : true
 		}
 	};
 
