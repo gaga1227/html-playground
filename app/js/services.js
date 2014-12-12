@@ -35,6 +35,19 @@ angular.module('playground')
 	return statics;
 }])
 
+//utils factory
+// -------------------------------------------------------------------------------------------
+.factory('utilsFactory', ['staticFactory', function(staticFactory){
+	var utils = {
+		//unique ID for pattern
+		generateUID: function() {
+			return ("000000" + (Math.random()*Math.pow(36,6) << 0).toString(36)).slice(-6);
+		}
+	};
+
+	return utils;
+}])
+
 // repo service
 // -------------------------------------------------------------------------------------------
 .service('repoService', [function() {

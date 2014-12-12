@@ -22,7 +22,8 @@
 }
 
 /*
-# app
+# pattern view
+** all styles in pattern view
 */
 .app-pattern,
 [class^="app-pattern-"] {
@@ -34,18 +35,12 @@
   padding: 0;
 }
 
-/*
-## pattern contaienr
-*/
 .app-pattern {
   top: 0;
   min-width: 1024px;
   height: 100%;
 }
 
-/*
-### pattern header
-*/
 .app-pattern-header {
   top: 0;
   height: 60px;
@@ -71,9 +66,6 @@
   text-align: left;
 }
 
-/*
-### pattern editor
-*/
 .app-pattern-editor {
   top: 60px;
 }
@@ -82,9 +74,6 @@
   height: 300px;
 }
 
-/*
-### pattern display
-*/
 .app-pattern-display {
   top: 360px;
   bottom: 0;
@@ -100,5 +89,9 @@
   padding: 0;
   border: 0;
 }
+
+/*
+# app
+*/
 
 /*# sourceMappingURL=app.css.map */

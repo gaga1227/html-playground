@@ -1,7 +1,7 @@
 <!-- pattern container -->
-<div class="app-pattern">
+<div class="app-pattern" id="app-pattern_{{::pattern.id}}">
 	<!-- pattern editor -->
-	<div class="app-pattern-header" id="app-pattern-header_{{pattern.id}}">
+	<div class="app-pattern-header">
 		<div class="utils"><!--
 		--><a href="#" class="btnIcon" title="Back to main"><i class="icon ion-grid"></i></a><!--
 		--></div>
@@ -11,19 +11,19 @@
 			--><a href="" class="btnIcon" title="Revert changes"
 				ng-click="revert()"><i class="icon ion-ios-undo-outline"></i></a><!--
 		--></div>
-		<h1 class="heading">Pattern No. <span ng-bind="pattern.id"></span></h1>
+		<h1 class="heading" title="{{::pattern.title}}" ng-bind="::pattern.title"></h1>
 	</div>
 	<!-- pattern editor -->
-	<div class="app-pattern-editor" id="app-pattern-editor_{{pattern.id}}">
-		<div ui-ace="{
-			useWrapMode : true,
-			showGutter: true,
-			theme:'monokai',
-			mode: 'xml',
-			onLoad: aceLoaded,
-			onChange: aceChanged
-		}"
-		ng-model="input"></div>
+	<div class="app-pattern-editor">
+		<div ng-model="input"
+			ui-ace="{
+				useWrapMode : true,
+				showGutter: true,
+				theme:'monokai',
+				mode: 'xml',
+				onLoad: aceLoaded,
+				onChange: aceChanged
+			}"></div>
 	</div>
 	<!-- pattern display -->
 	<div class="app-pattern-display">

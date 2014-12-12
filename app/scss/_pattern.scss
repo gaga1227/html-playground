@@ -1,11 +1,11 @@
 /*
-# app
+# pattern view
+** all styles in pattern view
 */
-.app {
 
-}
+// common styles
+// -------------------------------------------------------------------------------------------
 
-//common
 .app-pattern,
 [class^="app-pattern-"] {
 	display: block;
@@ -16,18 +16,14 @@
 	padding: 0;
 }
 
-/*
-## pattern contaienr
-*/
+// container
 .app-pattern {
 	top: 0;
 	min-width: 1024px;
 	height: 100%;
 }
 
-/*
-### pattern header
-*/
+// header
 .app-pattern-header {
 	top: 0;
 	height: 60px;
@@ -55,9 +51,7 @@
 	}
 }
 
-/*
-### pattern editor
-*/
+// editor
 .app-pattern-editor {
 	top: 60px;
 	&,
@@ -66,9 +60,7 @@
 	}
 }
 
-/*
-### pattern display
-*/
+// display
 .app-pattern-display {
 	top: 360px;
 	bottom: 0;
@@ -85,4 +77,15 @@
 		padding: 0;
 		border: 0;
 	}
+}
+
+// layout
+// -------------------------------------------------------------------------------------------
+
+// landscape (default)
+
+
+// portrait
+@media only screen and (orientation: portrait) {
+
 }
