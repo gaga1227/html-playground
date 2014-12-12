@@ -11,7 +11,13 @@
 			--><a href="" class="btnIcon" title="Revert changes"
 				ng-click="revert()"><i class="icon ion-ios-undo-outline"></i></a><!--
 		--></div>
-		<h1 class="heading" title="{{::pattern.title}}" ng-bind="::pattern.title"></h1>
+		<h1 class="heading">
+			<span ng-bind="::pattern.title"></span>
+			<span class="small">
+				<span ng-bind="'Updated ' + sincelastupdate"></span>
+				<span ng-bind="' by ' + pattern.author"></span>
+			</span>
+		</h1>
 	</div>
 	<!-- pattern editor -->
 	<div class="app-pattern-editor">

@@ -36,8 +36,17 @@
 		text-align: center;
 		font-size: 22px;
 		font-weight: 400;
-		line-height: 60px;
+		line-height: 50px;
 		white-space:nowrap;
+
+		//secondary text
+		.small {
+			display: block;
+			margin-top: -8px;
+			font-size: 10px;
+			line-height: 10px;
+			opacity: 0.7;
+		}
 	}
 
 	.utils {

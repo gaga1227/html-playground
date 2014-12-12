@@ -1,7 +1,7 @@
 angular.module('playground')
 .controller('PatternController', [
-	'$scope', '$sce', 'patternService', 'staticFactory',
-	function($scope, $sce, patternService, staticFactory) {
+	'$scope', '$sce', 'patternService', 'staticFactory', 'utilsFactory',
+	function($scope, $sce, patternService, staticFactory, utilsFactory) {
 
 	// ace editor init and config
 	// -------------------------------------------------------------------------------------------
@@ -51,9 +51,16 @@ angular.module('playground')
 			console.log('[pattern.save]: ', 'No updates to input, exit.');
 			return false;
 		}
-		//prep data
+
+		//prep time data
+		$scope.pattern.lastupdate = !isNaN($scope.pattern.lastupdate) ? $scope.pattern.lastupdate : 0;
+		$scope.pattern.lastupdate = Math.max($scope.pattern.lastupdate, new Date().getTime());
+		$scope.sincelastupdate = utilsFactory.getDisplayTime($scope.pattern.lastupdate);
+
+		//prep html data
 		$scope.input = style_html($scope.input, staticFactory.beautifyHtmlOptions);
 		$scope.pattern.html = minify($scope.input, staticFactory.minifyHtmlOptions);
+
 		//call pattern service
 		var request = patternService.putPattern($scope.pattern.id, $scope.pattern);
 		request.then(function(){
@@ -70,6 +77,7 @@ angular.module('playground')
 			console.log('[pattern.revert]: ', 'No updates to input, exit.');
 			return false;
 		}
+
 		//revert input valur to stored model value
 		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
 
@@ -123,6 +131,9 @@ angular.module('playground')
 
 		//set scope data from result data
 		$scope.pattern = data;
+
+		//prep time data
+		$scope.sincelastupdate = utilsFactory.getDisplayTime($scope.pattern.lastupdate);
 
 		//prep input data for editor
 		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);

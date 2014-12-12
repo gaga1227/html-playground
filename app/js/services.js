@@ -42,6 +42,30 @@ angular.module('playground')
 		//unique ID for pattern
 		generateUID: function() {
 			return ("000000" + (Math.random()*Math.pow(36,6) << 0).toString(36)).slice(-6);
+		},
+
+		//format time into display text
+		getDisplayTime: function(lasttime) {
+			var timeDiffSec = Math.round((new Date().getTime() - lasttime) / 1000);
+			var timeDisplay = '';
+			//less than 10 mins
+			if (timeDiffSec < 60 * 10) {
+				timeDisplay = 'just now';
+			}
+			//more than 10 mins
+			if (timeDiffSec >= 60 * 10) {
+				timeDisplay = Math.floor(timeDiffSec/60) + ' mins ago';
+			}
+			//more than 1 hour
+			if (timeDiffSec >= 3600) {
+				timeDisplay = Math.floor(timeDiffSec/3600) + ' hrs ago';
+			}
+			//more than 1 day
+			if (timeDiffSec >= 3600 * 24) {
+				timeDisplay = Math.floor(timeDiffSec/3600*24) + ' Days ago';
+			}
+
+			return timeDisplay;
 		}
 	};
 
