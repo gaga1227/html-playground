@@ -62,7 +62,7 @@ angular.module('playground')
 			}
 			//more than 1 day
 			if (timeDiffSec >= 3600 * 24) {
-				timeDisplay = Math.floor(timeDiffSec/3600*24) + ' Days ago';
+				timeDisplay = Math.floor(timeDiffSec/3600/24) + ' Days ago';
 			}
 
 			return timeDisplay;
