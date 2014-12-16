@@ -65,6 +65,7 @@ angular.module('playground')
 		var request = patternService.putPattern($scope.pattern.id, $scope.pattern);
 		request.then(function(){
 			console.log('[pattern.save]: ', 'updates saved in cloud!');
+			alert('Pattern Updates Saved!');
 		}, function(){
 
 		});
@@ -83,6 +84,18 @@ angular.module('playground')
 
 		console.log('[pattern.revert]: ', 'reverted back to stored html value.');
 	};
+
+	//toggle settings
+	$scope.toggleSettings = function(){
+		//trigger UI update
+		utilsFactory.toggleSettings();
+		//if has ace editor
+		if ($scope.editor) {
+			$('.app-pattern').one(staticFactory.events.transitionEnd, function(){
+				$scope.editor.resize();
+			});
+		}
+	}
 
 	// display pattern data
 	// -------------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 /*
 # pattern view
-** all styles in pattern view
+** all styles in pattern view **
 */
 
 // common styles
@@ -19,7 +19,6 @@
 // container
 .app-pattern {
 	top: 0;
-	min-width: 1024px;
 	height: 100%;
 }
 
@@ -32,17 +31,18 @@
 
 	.heading {
 		max-width: 400px;
-		margin: 0 auto;
+		margin: 0 calc( 50% - 200px );
 		text-align: center;
 		font-size: 22px;
 		font-weight: 400;
 		line-height: 50px;
-		white-space:nowrap;
+		@include text-truncate();
 
 		//secondary text
 		.small {
 			display: block;
-			margin-top: -8px;
+			position: relative;
+			top: -8px;
 			font-size: 10px;
 			line-height: 10px;
 			opacity: 0.7;

@@ -1,13 +1,14 @@
-//UI modules
+//vars and utils
 @import "_vars.scss";
+@import "_mixins.scss";
+
+//resets
+@import "_reset.scss";
+
+//UI modules
 @import "_buttons.scss";
 
 //app modules
 @import "_pattern.scss";
-
-/*
-# app
-*/
-.app {
-
-}
+@import "_settings.scss";
+@import "_container.scss";

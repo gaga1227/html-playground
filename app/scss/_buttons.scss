@@ -1,6 +1,9 @@
 /*
-### btnIcon
+# pattern view
+** all styles in pattern view **
 */
+
+//button icon
 .btnIcon {
 	display: inline-block;
 	position: relative;
@@ -17,9 +20,9 @@
 	line-height: 60px;
 	text-align: center;
 
-	-webkit-transition: all $transSpeed $transEasing;
-	        transition: all $transSpeed $transEasing;
+	@include transition(all $transSpeed $transEasing);
 
+	text-decoration: none!important;
 	&:hover {
 		background: rgba(0,0,0,0.2);
 	}

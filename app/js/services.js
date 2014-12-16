@@ -3,6 +3,17 @@ angular.module('playground')
 // static factory
 .factory('staticFactory', [function(){
 	var statics = {
+		//UI classes
+		classes: {
+			settingsActiveCls: 'settingsActive'
+		},
+
+		//events
+		events: {
+			transitionEnd: 'webkitTransitionEnd transitionend',
+			animationEnd: 'webkitAnimationEnd animationend'
+		},
+
 		//pattern service
 		webServiceURL: 'https://patternplayground.firebaseio.com/',
 		patternsPath: 'patterns',
@@ -66,6 +77,22 @@ angular.module('playground')
 			}
 
 			return timeDisplay;
+		},
+
+		//toggle settings penel
+		settingsActive: false,
+		toggleSettings: function() {
+			//toggle state
+			this.settingsActive = !this.settingsActive;
+			//update UI
+			var $app = $('.app-view'),
+				activeCls = staticFactory.classes.settingsActiveCls;
+			if (!$app.length) return;
+			if (this.settingsActive) {
+				$app.addClass(activeCls);
+			} else {
+				$app.removeClass(activeCls);
+			}
 		}
 	};
 

@@ -1,5 +1,25 @@
 /*
-### btnIcon
+# mixins
+** common utils mixins **
+*/
+/*
+# reset
+** custom resets on top of normalise **
+*/
+html {
+  width: 100%;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+# pattern view
+** all styles in pattern view **
 */
 .btnIcon {
   display: inline-block;
@@ -14,8 +34,9 @@
   font-size: 32px;
   line-height: 60px;
   text-align: center;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out 0.3s ease-in-out;
+  text-decoration: none !important;
 }
 .btnIcon:hover {
   background: rgba(0, 0, 0, 0.2);
@@ -23,7 +44,7 @@
 
 /*
 # pattern view
-** all styles in pattern view
+** all styles in pattern view **
 */
 .app-pattern,
 [class^="app-pattern-"] {
@@ -37,7 +58,6 @@
 
 .app-pattern {
   top: 0;
-  min-width: 1024px;
   height: 100%;
 }
 
@@ -49,16 +69,19 @@
 }
 .app-pattern-header .heading {
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0 calc( 50% - 200px );
   text-align: center;
   font-size: 22px;
   font-weight: 400;
   line-height: 50px;
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .app-pattern-header .heading .small {
   display: block;
-  margin-top: -8px;
+  position: relative;
+  top: -8px;
   font-size: 10px;
   line-height: 10px;
   opacity: 0.7;
@@ -98,7 +121,58 @@
 }
 
 /*
-# app
+# Settings panel
+** drawer panel for settings **
 */
+.app-settings {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 100;
+  color: #fff;
+  background: #2a9fd8;
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+/*
+# Container
+** overall app containers **
+*/
+.app,
+.app-view {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-view {
+  min-width: 650px;
+  overflow: hidden;
+}
+.app-view .app-pattern,
+.app-view .app-settings {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.app-view.settingsActive .app-pattern {
+  width: calc( 100% - 250px );
+}
+.app-view.settingsActive .app-settings {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
 
 /*# sourceMappingURL=app.css.map */
