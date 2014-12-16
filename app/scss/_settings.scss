@@ -18,7 +18,29 @@
 	overflow: hidden;
 	z-index: 100;
 	color: #fff;
-	background: $themeBlue;
+	background: darken($themeBlue, 10%);
+
 	//default pos (hidden)
 	@include transform( translateX(100%) );
+
+	//sec
+	.app-sec {
+		border-top: 1px solid darken($themeBlue, 7%);
+		&:first-child {
+			border-top: none;
+		}
+	}
+
+	//heading
+	.heading {
+		font-weight: 300;
+		text-transform: uppercase;
+		margin: 15px 0;
+		&:first-child {
+			margin-top: 0;
+		}
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 }

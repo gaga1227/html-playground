@@ -27,6 +27,9 @@ angular.module('playground')
 	// view model data
 	// -------------------------------------------------------------------------------------------
 
+	//UI mode
+	$scope.settingsActive = utilsFactory.settingsActive;
+
 	//input data for editor
 	$scope.input = '';
 
@@ -47,7 +50,7 @@ angular.module('playground')
 	//save to cloud
 	$scope.save = function(){
 		//exit
-		if ($scope.pattern.html == $scope.input) {
+		if ($scope.pattern.html == minify($scope.input, staticFactory.minifyHtmlOptions)) {
 			console.log('[pattern.save]: ', 'No updates to input, exit.');
 			return false;
 		}
@@ -89,6 +92,9 @@ angular.module('playground')
 	$scope.toggleSettings = function(){
 		//trigger UI update
 		utilsFactory.toggleSettings();
+		//update mode data
+		$scope.settingsActive = utilsFactory.settingsActive;
+		console.log($scope.settingsActive);
 		//if has ace editor
 		if ($scope.editor) {
 			$('.app-pattern').one(staticFactory.events.transitionEnd, function(){

@@ -1,6 +1,10 @@
 //colors
 $themeBlue: #2a9fd8;
 
+//typography
+$baseFontSize: 13px;
+$baseFontFamily: 'Lato', sans-serif;
+
 //transition and animations
 $transSpeed: 0.25s;
 $transEasing: ease-in-out;
@@ -8,3 +12,4 @@ $transEasing: ease-in-out;
 //layout
 $appMinWidth: 650px;
 $settingsWidth: 250px;
+$gutterSize: 15px;

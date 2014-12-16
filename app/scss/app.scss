@@ -7,8 +7,11 @@
 
 //UI modules
 @import "_buttons.scss";
+@import "_typography.scss";
+@import "_forms.scss";
+@import "_sections.scss";
 
 //app modules
+@import "_container.scss";
 @import "_pattern.scss";
 @import "_settings.scss";
-@import "_container.scss";

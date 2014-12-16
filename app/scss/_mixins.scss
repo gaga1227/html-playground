@@ -49,7 +49,7 @@
 }
 
 // Transitions mixins
-@mixin transition($transition-property:all, $transition-time: .3s, $method: ease-in-out) {
+@mixin transition($transition-property:all, $transition-time: .25s, $method: ease-in-out) {
 	-webkit-transition: $transition-property $transition-time $method;
 	transition: $transition-property $transition-time $method;
 }

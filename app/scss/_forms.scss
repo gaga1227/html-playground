@@ -1,0 +1,89 @@
+/*
+# Form
+** all form styles **
+*/
+
+// fieldset
+fieldset {
+	display: block;
+	position: relative;
+	margin: 0 0 $gutterSize/2 0;
+	padding: 0;
+	border: none;
+}
+
+//label
+label {
+	display: block;
+	font-size: 13px;
+	font-weight: 300;
+	margin: 0 0 $gutterSize/3 0;
+	padding: 0;
+}
+
+//input
+input {
+	//general
+	display: block;
+	width: 100%;
+	margin: 0 0 $gutterSize/2 0;
+	padding: 7px;
+	color: rgba(255,255,255,0.75);
+	background: rgba(255,255,255,0.20);
+	border: 1px solid transparent;
+	font-size: 18px;
+	font-weight: 400;
+	@include transition();
+
+	//interaction
+	&:focus {
+		color: inherit;
+		background: rgba(0,0,0,0.2);
+		border: 1px solid rgba(255,255,255,0.6);
+		outline: none;
+	}
+
+	//readonly
+	&[readonly] {
+		&,
+		&:focus {
+			color: rgba(255,255,255,0.75);
+			background: transparent;
+			border-color: rgba(255,255,255,0.2);
+			cursor: not-allowed;
+		}
+	}
+
+	//checkbox
+	&[type="checkbox"] {
+
+	}
+
+	//radio
+	&[type="radio"] {
+
+	}
+}
+
+//select
+select {
+	//general
+	display: block;
+	width: 100%;
+	margin: 0 0 $gutterSize/2 0;
+	padding: 7px;
+	color: rgba(255,255,255,0.75);
+	background: rgba(255,255,255,0.20);
+	border: 1px solid transparent;
+	font-size: 18px;
+	font-weight: 400;
+	@include transition();
+
+	//interaction
+	&:focus {
+		color: inherit;
+		background: rgba(0,0,0,0.20);
+		border: 1px solid rgba(255,255,255,0.6);
+		outline: none;
+	}
+}

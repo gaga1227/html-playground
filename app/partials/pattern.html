@@ -10,14 +10,14 @@
 				ng-click="revert()"><i class="icon ion-ios-undo-outline"></i></a><!--
 			--><a href="" class="btnIcon" title="Save to cloud"
 				ng-click="save()"><i class="icon ion-ios-cloud-upload-outline"></i></a><!--
-			--><a href="" class="btnIcon" title="More Settings"
+			--><a href="" class="btnIcon" ng-class="{active: settingsActive}" title="More Settings"
 				ng-click="toggleSettings()"><i class="icon ion-ios-more-outline"></i></a><!--
 		--></div>
 		<h1 class="heading">
-			<span ng-bind="::pattern.title"></span>
+			<span ng-bind="pattern.title"></span>
 			<span class="small">
 				<span ng-bind="'Updated ' + sincelastupdate"></span>
-				<span ng-bind="' by ' + pattern.author"></span>
+				<!-- <span ng-bind="' by ' + pattern.author"></span> -->
 			</span>
 		</h1>
 	</div>
@@ -41,5 +41,28 @@
 
 <!-- settings -->
 <div class="app-settings" id="app-settings_{{::pattern.id}}">
-	settings
+	<!-- settings -->
+	<div class="app-sec" id="app-settings-info">
+		<h3 class="heading">Pattern Info</h3>
+		<fieldset>
+			<label>Name:</label>
+			<input type="text" ng-model="pattern.title">
+		</fieldset>
+		<fieldset>
+			<label>Author:</label>
+			<input type="text" ng-model="pattern.author" readonly>
+		</fieldset>
+		<fieldset>
+			<label>Repo:</label>
+			<select ng-model="pattern.repo">
+				<option value="BS331">Bootstrap 3</option>
+				<option value="SBTR20">Sportsbet R20</option>
+			</select>
+		</fieldset>
+	</div>
+	<!-- settings -->
+	<div class="app-sec" id="app-settings-comments">
+		<h3 class="heading">Comments</h3>
+		<p>TBC</p>
+	</div>
 </div>

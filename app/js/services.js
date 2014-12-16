@@ -5,6 +5,7 @@ angular.module('playground')
 	var statics = {
 		//UI classes
 		classes: {
+			activeCls: 'active',
 			settingsActiveCls: 'settingsActive'
 		},
 
@@ -65,15 +66,15 @@ angular.module('playground')
 			}
 			//more than 10 mins
 			if (timeDiffSec >= 60 * 10) {
-				timeDisplay = Math.floor(timeDiffSec/60) + ' mins ago';
+				timeDisplay = Math.floor(timeDiffSec/60) + ' min(s) ago';
 			}
 			//more than 1 hour
 			if (timeDiffSec >= 3600) {
-				timeDisplay = Math.floor(timeDiffSec/3600) + ' hrs ago';
+				timeDisplay = Math.floor(timeDiffSec/3600) + ' hr(s) ago';
 			}
 			//more than 1 day
 			if (timeDiffSec >= 3600 * 24) {
-				timeDisplay = Math.floor(timeDiffSec/3600/24) + ' Days ago';
+				timeDisplay = Math.floor(timeDiffSec/3600/24) + ' Day(s) ago';
 			}
 
 			return timeDisplay;
