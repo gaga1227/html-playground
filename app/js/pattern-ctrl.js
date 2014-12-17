@@ -8,6 +8,20 @@ angular.module('playground')
 
 	// check if editor's html is updated compared to saved html in model
 	var isHtmlUpdated = function(){
+		//input syntax error handling
+		try {
+			minify($scope.input, staticFactory.minifyHtmlOptions);
+		} catch(e) {
+			//if getting parse errors
+			if (e.indexOf('Parse Error') != -1) {
+				console.log('[pattern.isHtmlUpdated]: ', 'Input HTML has syntax error, exit.');
+				alert('Your HTML input is not valid, fix it and try again!');
+			}
+			//return false to prevent saving/revert
+			return false;
+		}
+
+		//if no error caught from input html
 		var isUpdated = ($scope.pattern.html == minify($scope.input, staticFactory.minifyHtmlOptions))
 			? false
 			: true;
@@ -70,6 +84,7 @@ angular.module('playground')
 		//exit
 		if (!isHtmlUpdated() && !utilsFactory.isInputUpdated($scope.patternInfoForm.patternTitle)) {
 			console.log('[pattern.save]: ', 'No updates to input, exit.');
+			alert('No Valid Pattern Updates to Save!');
 			return false;
 		}
 
@@ -100,6 +115,7 @@ angular.module('playground')
 		//exit
 		if (!isHtmlUpdated()) {
 			console.log('[pattern.revert]: ', 'No updates to input, exit.');
+			alert('No Valid Pattern Updates to Revert!');
 			return false;
 		}
 
@@ -107,6 +123,7 @@ angular.module('playground')
 		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
 
 		console.log('[pattern.revert]: ', 'reverted back to stored html value.');
+		alert('Pattern Updates Reverted!');
 	};
 
 	//toggle settings
