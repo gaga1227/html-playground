@@ -3,6 +3,17 @@ angular.module('playground')
 	'$scope', '$sce', 'patternService', 'staticFactory', 'utilsFactory',
 	function($scope, $sce, patternService, staticFactory, utilsFactory) {
 
+	// vars and utils
+	// -------------------------------------------------------------------------------------------
+
+	// check if editor's html is updated compared to saved html in model
+	var isHtmlUpdated = function(){
+		var isUpdated = ($scope.pattern.html == minify($scope.input, staticFactory.minifyHtmlOptions))
+			? false
+			: true;
+		return isUpdated;
+	};
+
 	// ace editor init and config
 	// -------------------------------------------------------------------------------------------
 
@@ -49,8 +60,15 @@ angular.module('playground')
 
 	//save to cloud
 	$scope.save = function(){
+		//validation
+		if (!$scope.pattern.title) {
+			console.log('[pattern.save]: ', 'Pattern title is empty, exit.');
+			alert('Pattern title cannot be empty!');
+			return false;
+		}
+
 		//exit
-		if ($scope.pattern.html == minify($scope.input, staticFactory.minifyHtmlOptions)) {
+		if (!isHtmlUpdated() && !utilsFactory.isInputUpdated($scope.patternInfoForm.patternTitle)) {
 			console.log('[pattern.save]: ', 'No updates to input, exit.');
 			return false;
 		}
@@ -58,7 +76,7 @@ angular.module('playground')
 		//prep time data
 		$scope.pattern.lastupdate = !isNaN($scope.pattern.lastupdate) ? $scope.pattern.lastupdate : 0;
 		$scope.pattern.lastupdate = Math.max($scope.pattern.lastupdate, new Date().getTime());
-		$scope.sincelastupdate = utilsFactory.getDisplayTime($scope.pattern.lastupdate);
+		$scope.sincelastupdate = utilsFactory.getDisplayTimePeriod($scope.pattern.lastupdate);
 
 		//prep html data
 		$scope.input = style_html($scope.input, staticFactory.beautifyHtmlOptions);
@@ -67,6 +85,9 @@ angular.module('playground')
 		//call pattern service
 		var request = patternService.putPattern($scope.pattern.id, $scope.pattern);
 		request.then(function(){
+			//reset pattern title input
+			utilsFactory.resetInput($scope.patternInfoForm, 'patternTitle');
+
 			console.log('[pattern.save]: ', 'updates saved in cloud!');
 			alert('Pattern Updates Saved!');
 		}, function(){
@@ -77,7 +98,7 @@ angular.module('playground')
 	//revert to last saved version
 	$scope.revert = function(){
 		//exit
-		if ($scope.input == $scope.pattern.html) {
+		if (!isHtmlUpdated()) {
 			console.log('[pattern.revert]: ', 'No updates to input, exit.');
 			return false;
 		}
@@ -92,15 +113,21 @@ angular.module('playground')
 	$scope.toggleSettings = function(){
 		//trigger UI update
 		utilsFactory.toggleSettings();
+
 		//update mode data
 		$scope.settingsActive = utilsFactory.settingsActive;
-		console.log($scope.settingsActive);
+
 		//if has ace editor
 		if ($scope.editor) {
 			$('.app-pattern').one(staticFactory.events.transitionEnd, function(){
 				$scope.editor.resize();
 			});
 		}
+	}
+
+	//convert time to display msg
+	$scope.getTimeDisplayMsg = function(time){
+		return utilsFactory.getDisplayTime(time);
 	}
 
 	// display pattern data
@@ -152,7 +179,7 @@ angular.module('playground')
 		$scope.pattern = data;
 
 		//prep time data
-		$scope.sincelastupdate = utilsFactory.getDisplayTime($scope.pattern.lastupdate);
+		$scope.sincelastupdate = utilsFactory.getDisplayTimePeriod($scope.pattern.lastupdate);
 
 		//prep input data for editor
 		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);

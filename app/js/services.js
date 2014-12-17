@@ -56,28 +56,65 @@ angular.module('playground')
 			return ("000000" + (Math.random()*Math.pow(36,6) << 0).toString(36)).slice(-6);
 		},
 
-		//format time into display text
-		getDisplayTime: function(lasttime) {
+		//format time point into display text
+		getDisplayTime: function(time) {
+			var timeDisplay = '';
+			var date = new Date(time).toDateString();
+			var today = new Date().toDateString();
+
+			if (date == today) {
+				timeDisplay = 'Today';
+			} else {
+				timeDisplay = date;
+			}
+
+			return timeDisplay;
+		},
+
+		//format time period into display text
+		getDisplayTimePeriod: function(lasttime) {
 			var timeDiffSec = Math.round((new Date().getTime() - lasttime) / 1000);
 			var timeDisplay = '';
+			var timeNumberInUnit;
+
+			var formatDisplayMsg = function(num, unit){
+				var msg = num + ' ' + unit + ((num > 1)?'s':'') + ' ago';
+				return msg;
+			};
+
 			//less than 10 mins
 			if (timeDiffSec < 60 * 10) {
 				timeDisplay = 'just now';
 			}
 			//more than 10 mins
 			if (timeDiffSec >= 60 * 10) {
-				timeDisplay = Math.floor(timeDiffSec/60) + ' min(s) ago';
+				timeNumberInUnit = Math.floor(timeDiffSec/60);
+				timeDisplay = formatDisplayMsg(timeNumberInUnit, 'minute');
 			}
 			//more than 1 hour
 			if (timeDiffSec >= 3600) {
-				timeDisplay = Math.floor(timeDiffSec/3600) + ' hr(s) ago';
+				timeNumberInUnit = Math.floor(timeDiffSec/3600);
+				timeDisplay = formatDisplayMsg(timeNumberInUnit, 'hour');
 			}
 			//more than 1 day
 			if (timeDiffSec >= 3600 * 24) {
-				timeDisplay = Math.floor(timeDiffSec/3600/24) + ' Day(s) ago';
+				timeNumberInUnit = Math.floor(timeDiffSec/3600/24);
+				timeDisplay = formatDisplayMsg(timeNumberInUnit, 'day');
 			}
 
 			return timeDisplay;
+		},
+
+		//check if input has been updated
+		isInputUpdated: function(input){
+			var isUpdated = input.$dirty;
+			return isUpdated;
+		},
+
+		//reset input
+		resetInput: function(form, input){
+			form.$setPristine(input, true);
+			form.$setUntouched(input, true);
 		},
 
 		//toggle settings penel

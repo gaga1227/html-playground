@@ -6,18 +6,17 @@
 		--><a href="#home" class="btnIcon" title="Back to main"><i class="icon ion-grid"></i></a><!--
 		--></div>
 		<div class="utils"><!--
-			--><a href="" class="btnIcon" title="Revert changes"
+			--><a href="" class="btnIcon" title="Revert Updates"
 				ng-click="revert()"><i class="icon ion-ios-undo-outline"></i></a><!--
 			--><a href="" class="btnIcon" title="Save to cloud"
 				ng-click="save()"><i class="icon ion-ios-cloud-upload-outline"></i></a><!--
-			--><a href="" class="btnIcon" ng-class="{active: settingsActive}" title="More Settings"
+			--><a href="" class="btnIcon" ng-class="{active: settingsActive}" title="Pattern Info"
 				ng-click="toggleSettings()"><i class="icon ion-ios-more-outline"></i></a><!--
 		--></div>
 		<h1 class="heading">
-			<span ng-bind="pattern.title"></span>
+			<span class="title" ng-bind="pattern.title"></span>
 			<span class="small">
 				<span ng-bind="'Updated ' + sincelastupdate"></span>
-				<!-- <span ng-bind="' by ' + pattern.author"></span> -->
 			</span>
 		</h1>
 	</div>
@@ -44,21 +43,37 @@
 	<!-- settings -->
 	<div class="app-sec" id="app-settings-info">
 		<h3 class="heading">Pattern Info</h3>
-		<fieldset>
-			<label>Name:</label>
-			<input type="text" ng-model="pattern.title">
-		</fieldset>
-		<fieldset>
-			<label>Author:</label>
-			<input type="text" ng-model="pattern.author" readonly>
-		</fieldset>
-		<fieldset>
-			<label>Repo:</label>
-			<select ng-model="pattern.repo">
-				<option value="BS331">Bootstrap 3</option>
-				<option value="SBTR20">Sportsbet R20</option>
-			</select>
-		</fieldset>
+		<form name="patternInfoForm">
+			<fieldset>
+				<label>Title:</label>
+				<input id="app-settings-patternTitle" name="patternTitle" type="text" required ng-model="pattern.title" placeholder="Please add title">
+			</fieldset>
+			<fieldset>
+				<label>Repo:</label>
+				<select id="app-settings-patternRepo" name="patternRepo" required ng-model="pattern.repo">
+					<option value="BS331">Bootstrap 3</option>
+					<option value="SBTR20">Sportsbet R20</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<label>
+					Author:
+					<span class="value" ng-bind="::pattern.author"></span>
+				</label>
+			</fieldset>
+			<fieldset>
+				<label>
+					Last Update:
+					<span class="value" ng-bind="getTimeDisplayMsg(pattern.lastupdate)"></span>
+				</label>
+			</fieldset>
+			<fieldset>
+				<label>
+					ID:
+					<span class="value" ng-bind="::pattern.id"></span>
+				</label>
+			</fieldset>
+		</form>
 	</div>
 	<!-- settings -->
 	<div class="app-sec" id="app-settings-comments">

@@ -3,6 +3,9 @@
 ** all form styles **
 */
 
+// placeholders
+@include placeholder( rgba(255,255,255,0.5), italic );
+
 // fieldset
 fieldset {
 	display: block;
@@ -52,6 +55,11 @@ input {
 			border-color: rgba(255,255,255,0.2);
 			cursor: not-allowed;
 		}
+	}
+
+	//validation
+	&.ng-dirty.ng-invalid {
+		border-color: $invalid;
 	}
 
 	//checkbox

@@ -98,6 +98,26 @@ p {
 # Form
 ** all form styles **
 */
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
 fieldset {
   display: block;
   position: relative;
@@ -138,6 +158,9 @@ input[readonly], input[readonly]:focus {
   background: transparent;
   border-color: rgba(255, 255, 255, 0.2);
   cursor: not-allowed;
+}
+input.ng-dirty.ng-invalid {
+  border-color: #f00;
 }
 
 select {
@@ -196,7 +219,7 @@ select:focus {
 }
 
 .app-view.settingsActive .app-pattern {
-  width: calc( 100% - 250px );
+  width: calc( 100% - 300px );
 }
 .app-view.settingsActive .app-settings {
   -webkit-transform: translateX(0);
@@ -239,6 +262,10 @@ select:focus {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.app-pattern-header .heading .title {
+  display: block;
+  height: 50px;
 }
 .app-pattern-header .heading .small {
   display: block;
@@ -292,7 +319,7 @@ select:focus {
   top: 0;
   bottom: 0;
   right: 0;
-  width: 250px;
+  width: 300px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -304,14 +331,14 @@ select:focus {
   transform: translateX(100%);
 }
 .app-settings .app-sec {
-  border-top: 1px solid #228abc;
+  border-top: 1px solid #2490c5;
 }
 .app-settings .app-sec:first-child {
   border-top: none;
 }
 .app-settings .heading {
   font-weight: 300;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: 15px 0;
 }
 .app-settings .heading:first-child {
@@ -319,6 +346,11 @@ select:focus {
 }
 .app-settings .heading:last-child {
   margin-bottom: 0;
+}
+.app-settings label .value {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=app.css.map */

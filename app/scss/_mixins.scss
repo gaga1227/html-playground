@@ -32,11 +32,11 @@
 }
 
 // input placeholder
-@mixin placeholder($color:$discreet-text, $style:normal) {
-	&::-webkit-input-placeholder { color: $color; font-style:$style; }
-	&:-moz-placeholder { color: $color; font-style:$style; }
-	&::-moz-placeholder { color: $color; font-style:$style; }
-	&:-ms-input-placeholder { color: $color; font-style:$style; }
+@mixin placeholder($color:#000, $style:normal) {
+	::-webkit-input-placeholder { color: #{$color}; font-style:#{$style}; }
+	:-moz-placeholder { color: #{$color}; font-style:#{$style}; }
+	::-moz-placeholder { color: #{$color}; font-style:#{$style}; }
+	:-ms-input-placeholder { color: #{$color}; font-style:#{$style}; }
 }
 
 // Transform combined mixin
