@@ -56,6 +56,26 @@ angular.module('playground')
 			return ("000000" + (Math.random()*Math.pow(36,6) << 0).toString(36)).slice(-6);
 		},
 
+		//construct repo asset file elem from data
+		getRepoFile: function(repoPath, file, ext) {
+			var url = repoPath + file.path + file.filename + '.' + ext;
+			var $file;
+			if (ext == 'css') {
+				$file = $('<link>');
+				$file.attr({
+					"rel" : "stylesheet",
+					"href" : url
+				});
+			}
+			else if (ext == 'js') {
+				$file = $('<script></script>');
+				$file.attr({
+					"src" : url
+				});
+			}
+			return $file;
+		},
+
 		//format time point into display text
 		getDisplayTime: function(time) {
 			var timeDisplay = '';
@@ -139,8 +159,15 @@ angular.module('playground')
 
 // repo service
 // -------------------------------------------------------------------------------------------
-.service('repoService', [function() {
-
+.service('repoService', ['staticFactory', '$http', function(staticFactory, $http) {
+	this.getRepos = function() {
+		var s = staticFactory;
+		return $http.get(s.webServiceURL + s.reposPath + s.suffix);
+	};
+	this.getRepo = function(id) {
+		var s = staticFactory;
+		return $http.get(s.webServiceURL + s.reposPath + '/' + id + s.suffix);
+	};
 }])
 
 // pattern service

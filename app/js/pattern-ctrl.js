@@ -1,7 +1,7 @@
 angular.module('playground')
 .controller('PatternController', [
-	'$scope', '$sce', 'patternService', 'staticFactory', 'utilsFactory',
-	function($scope, $sce, patternService, staticFactory, utilsFactory) {
+	'$scope', '$sce', '$q', 'patternService', 'repoService', 'staticFactory', 'utilsFactory',
+	function($scope, $sce, $q, patternService, repoService, staticFactory, utilsFactory) {
 
 	// vars and utils
 	// -------------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ angular.module('playground')
 		// console.log(e);
 	};
 
-	// view model data
+	// view data
 	// -------------------------------------------------------------------------------------------
 
 	//UI mode
@@ -57,17 +57,6 @@ angular.module('playground')
 
 	//input data for editor
 	$scope.input = '';
-
-	// repo
-	$scope.repo = {
-		"id": "BS331",
-		"name": "Bootstrap 3.3.1",
-		"path": "repo/bs/",
-		"css": [
-			{ "path": "css/", "filename": "bootstrap" },
-			{ "path": "css/", "filename": "bootstrap-theme" }
-		]
-	};
 
 	// view methods
 	// -------------------------------------------------------------------------------------------
@@ -147,67 +136,54 @@ angular.module('playground')
 		return utilsFactory.getDisplayTime(time);
 	}
 
-	// display pattern data
+	// view pattern/repos data
 	// -------------------------------------------------------------------------------------------
 
-	//load pattern data
-	patternService.getPattern('BS-001')
+	//load pattern/repos data
+	var patternDataPromises = [];
+	patternDataPromises.push( repoService.getRepos() );
+	patternDataPromises.push( patternService.getPattern('BS-001') );
+
+	$q.all(patternDataPromises)
 		.then(function(result){
-			onPatternData(result.data);
+			onPatternData(result);
 		},
 		function(){
-
+			console.log('[patternService.getPattern]: ', 'Failed loading pattern data.');
+			alert('Failed loading pattern data, try again!');
 		});
 
-	// load pattern data handler
-	function onPatternData(data){
+	// pattern data handler
+	function onPatternData(result){
 		//common vars
-		var $frame = $('#app-pattern-display');
-		var $frameHead = $frame.contents().find('head');
-		var $frameBody = $frame.contents().find('body');
+		var $frame = $('#app-pattern-display'),
+			$frameHead = $frame.contents().find('head'),
+			$frameBody = $frame.contents().find('body');
 
-		//generate repo file
-		var getRepoFile = function(file, ext) {
-			var url = $scope.repo.path + file.path + file.filename + '.' + ext;
-			var $file;
-			if (ext == 'css') {
-				$file = $('<link>');
-				$file.attr({
-					"rel" : "stylesheet",
-					"href" : url
-				});
-			}
-			else if (ext == 'js') {
-				$file = $('<script></script>');
-				$file.attr({
-					"src" : url
-				});
-			}
-			return $file;
-		}
+		//set data from result to view model
+		$scope.pattern = result[1].data;
+		$scope.repos = result[0].data;
+		$scope.repo = result[0].data[ $scope.pattern.repo ];
 
 		//inject repo css dependencies
 		$frameHead.empty();
-		$.each($scope.repo.css, function(idx, ele){
-			$frameHead.append( getRepoFile(ele, 'css') );
-		});
+		if ($scope.repo.css.length) {
+			$.each($scope.repo.css, function(idx, ele){
+				$frameHead.append( utilsFactory.getRepoFile($scope.repo.path, ele, 'css') );
+			});
+		}
 
-		//set scope data from result data
-		$scope.pattern = data;
-
-		//prep time data
-		$scope.sincelastupdate = utilsFactory.getDisplayTimePeriod($scope.pattern.lastupdate);
-
-		//prep input data for editor
-		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
-
-		//watch input value and inject to display
+		//watch input value and inject to display on update
 		var cancelPatternInputWatch = $scope.$watch('input', function(){
-			//inject to iframe
 			$frameBody.html($scope.input);
 		});
 
-		//clean up watch
+		//prep time data
+		$scope.sincelastupdate = utilsFactory.getDisplayTimePeriod($scope.pattern.lastupdate);
+		//prep input data for editor
+		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
+
+		//clean ups
 		$scope.$on('destroy', function(e){
 			cancelPatternInputWatch();
 		});
