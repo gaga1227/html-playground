@@ -46,13 +46,17 @@
 		<form name="patternInfoForm">
 			<fieldset>
 				<label>Title:</label>
-				<input id="app-settings-patternTitle" name="patternTitle" type="text" required ng-model="pattern.title" placeholder="Please add title">
+				<input type="text"
+					id="app-settings-patternTitle" name="patternTitle"
+					placeholder="Please add title" required
+					ng-model="pattern.title">
 			</fieldset>
 			<fieldset>
 				<label>Repo:</label>
-				<select id="app-settings-patternRepo" name="patternRepo" required ng-model="pattern.repo">
-					<option value="BS331">Bootstrap 3</option>
-					<option value="SBTR20">Sportsbet R20</option>
+				<select
+					id="app-settings-patternRepo" name="patternRepo" required
+					ng-model="pattern.repo"
+					ng-options="val.id as val.name for (key, val) in repos">
 				</select>
 			</fieldset>
 			<fieldset>

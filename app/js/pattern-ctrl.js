@@ -28,6 +28,20 @@ angular.module('playground')
 		return isUpdated;
 	};
 
+	// updated iframe head dependencies from a list
+	var updateHeadDependencies = function($tgt, list, ext){
+		//exit
+		if (!$tgt.length) return;
+		if (ext == undefined) return;
+		//inject list of dependencies
+		$tgt.empty();
+		if (list && list.length) {
+			$.each(list, function(idx, ele){
+				$tgt.append( utilsFactory.getRepoFile($scope.repo.path, ele, ext) );
+			});
+		}
+	};
+
 	// ace editor init and config
 	// -------------------------------------------------------------------------------------------
 
@@ -71,7 +85,9 @@ angular.module('playground')
 		}
 
 		//exit
-		if (!isHtmlUpdated() && !utilsFactory.isInputUpdated($scope.patternInfoForm.patternTitle)) {
+		if (!isHtmlUpdated()
+			&& !utilsFactory.isInputUpdated($scope.patternInfoForm.patternTitle)
+			&& !utilsFactory.isInputUpdated($scope.patternInfoForm.patternRepo)) {
 			console.log('[pattern.save]: ', 'No updates to input, exit.');
 			alert('No Valid Pattern Updates to Save!');
 			return false;
@@ -91,6 +107,7 @@ angular.module('playground')
 		request.then(function(){
 			//reset pattern title input
 			utilsFactory.resetInput($scope.patternInfoForm, 'patternTitle');
+			utilsFactory.resetInput($scope.patternInfoForm, 'patternRepo');
 
 			console.log('[pattern.save]: ', 'updates saved in cloud!');
 			alert('Pattern Updates Saved!');
@@ -161,21 +178,29 @@ angular.module('playground')
 			$frameBody = $frame.contents().find('body');
 
 		//set data from result to view model
-		$scope.pattern = result[1].data;
-		$scope.repos = result[0].data;
-		$scope.repo = result[0].data[ $scope.pattern.repo ];
+		var patternData = result[1].data,
+			repoData = result[0].data;
+
+		$scope.pattern = patternData;
+		$scope.repos = repoData;
+		$scope.repo = repoData[$scope.pattern.repo];
 
 		//inject repo css dependencies
-		$frameHead.empty();
-		if ($scope.repo.css.length) {
-			$.each($scope.repo.css, function(idx, ele){
-				$frameHead.append( utilsFactory.getRepoFile($scope.repo.path, ele, 'css') );
-			});
-		}
+		updateHeadDependencies($frameHead, $scope.repo.css, 'css');
 
 		//watch input value and inject to display on update
 		var cancelPatternInputWatch = $scope.$watch('input', function(){
 			$frameBody.html($scope.input);
+		});
+
+		//watch pattern.repo value and inject assets
+		var cancelPatternRepoWatch = $scope.$watch('pattern.repo', function(){
+			//update new repo data
+			$scope.repo = repoData[$scope.pattern.repo];
+			//inject assets
+			updateHeadDependencies($frameHead, $scope.repo.css, 'css');
+
+			console.log('[WATCH:pattern.repo]: ', 'Pattern repo updated to: ' + $scope.repo.id);
 		});
 
 		//prep time data
@@ -186,6 +211,7 @@ angular.module('playground')
 		//clean ups
 		$scope.$on('destroy', function(e){
 			cancelPatternInputWatch();
+			cancelPatternRepoWatch();
 		});
 	}
 
