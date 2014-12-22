@@ -1,4 +1,8 @@
 /*
+# iOS7 colors
+** Convereted from https://github.com/claaslange/iOS7Colors **
+*/
+/*
 # mixins
 ** common utils mixins **
 */
@@ -48,7 +52,7 @@ body {
   text-decoration: none !important;
 }
 .btnIcon:hover, .btnIcon.active {
-  background: #2080af;
+  background: #0063c2;
 }
 
 /*
@@ -250,7 +254,7 @@ select:focus {
   top: 0;
   height: 60px;
   color: #fff;
-  background: #2a9fd8;
+  background: #007df5;
 }
 .app-pattern-header .heading {
   max-width: 400px;
@@ -325,13 +329,13 @@ select:focus {
   overflow: hidden;
   z-index: 100;
   color: #fff;
-  background: #2080af;
+  background: #0063c2;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
   transform: translateX(100%);
 }
 .app-settings .app-sec {
-  border-top: 1px solid #2490c5;
+  border-top: 1px solid #0070dc;
 }
 .app-settings .app-sec:first-child {
   border-top: none;

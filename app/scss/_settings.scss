@@ -18,14 +18,14 @@
 	overflow: hidden;
 	z-index: 100;
 	color: #fff;
-	background: darken($themeBlue, 10%);
+	background: darken($ios7Blue, 10%);
 
 	//default pos (hidden)
 	@include transform( translateX(100%) );
 
 	//sec
 	.app-sec {
-		border-top: 1px solid darken($themeBlue, 5%);
+		border-top: 1px solid darken($ios7Blue, 5%);
 		&:first-child {
 			border-top: none;
 		}
