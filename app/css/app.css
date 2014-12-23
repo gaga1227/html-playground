@@ -103,22 +103,22 @@ p {
 ** all form styles **
 */
 ::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-style: italic;
 }
 
 :-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-style: italic;
 }
 
 ::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-style: italic;
 }
 
 :-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   font-style: italic;
 }
 
@@ -145,26 +145,35 @@ input {
   padding: 7px;
   color: rgba(255, 255, 255, 0.75);
   background: rgba(255, 255, 255, 0.2);
-  border: 1px solid transparent;
+  border: none;
   font-size: 18px;
   font-weight: 400;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
 input:focus {
-  color: inherit;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #000;
+  background: #fff;
   outline: none;
 }
-input[readonly], input[readonly]:focus {
-  color: rgba(255, 255, 255, 0.75);
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.2);
-  cursor: not-allowed;
-}
 input.ng-dirty.ng-invalid {
-  border-color: #f00;
+  background: #fff;
+}
+input.ng-dirty.ng-invalid::-webkit-input-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+input.ng-dirty.ng-invalid:-moz-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+input.ng-dirty.ng-invalid::-moz-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+input.ng-dirty.ng-invalid:-ms-input-placeholder {
+  color: #ff3838;
+  font-style: italic;
 }
 
 select {
@@ -174,16 +183,15 @@ select {
   padding: 7px;
   color: rgba(255, 255, 255, 0.75);
   background: rgba(255, 255, 255, 0.2);
-  border: 1px solid transparent;
+  border: none;
   font-size: 18px;
   font-weight: 400;
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
 }
 select:focus {
-  color: inherit;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #000;
+  background: #fff;
   outline: none;
 }
 
