@@ -240,6 +240,151 @@ select:focus {
 }
 
 /*
+# dashboard view
+** all styles in dashboard view **
+*/
+.app-dash,
+[class^="app-dash-"] {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(199, 199, 204, 0.15);
+}
+
+.app-dash {
+  top: 0;
+  height: 100%;
+}
+
+.app-dash-header {
+  top: 0;
+  height: 80px;
+  color: #fff;
+  background: #fff;
+  z-index: 10;
+}
+.app-dash-header .logo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  margin: 0 0 -30px -45px;
+  padding: 0;
+  overflow: hidden;
+  color: #ffc947;
+  background: #007df5;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 90px;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.app-dash-main {
+  top: 80px;
+  bottom: 0;
+  color: #000;
+  overflow: auto;
+}
+
+.app-dash-footer {
+  display: none;
+}
+
+.app-patterns-list {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 40px 10px 10px 10px;
+  letter-spacing: -0.31em;
+  text-rendering: auto;
+  text-align: left;
+  text-align: center;
+}
+.app-patterns-list, .app-patterns-list > li {
+  list-style: none;
+}
+.app-patterns-list > * {
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  text-rendering: auto;
+  text-align: left;
+}
+
+.btnPattern {
+  display: inline-block;
+  position: relative;
+  width: 230px;
+  height: 12em;
+  margin: 10px;
+  padding: 0.75em 1.5em;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1.5em;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > .utils {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > span,
+.btnPattern > a {
+  display: block;
+  width: 100%;
+  margin: 0 0 5px 0;
+  color: #8f8f94;
+  font-weight: 400;
+  line-height: 1.5em;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > span i,
+.btnPattern > a i {
+  display: inline-block;
+  width: 16px;
+  color: #c7c7cc;
+}
+.btnPattern > .title {
+  color: #5959cf;
+  margin: 5px 0 10px 0;
+  padding: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25em;
+  border-bottom: 1px solid #e2e2e4;
+  white-space: normal;
+}
+.btnPattern > .title:hover {
+  color: #ff2b57;
+}
+.btnPattern:hover {
+  padding-right: 40px;
+}
+.btnPattern:hover .utils {
+  width: 40px;
+  opacity: 1;
+}
+
+/*
 # pattern view
 ** all styles in pattern view **
 */
@@ -363,6 +508,32 @@ select:focus {
   display: inline-block;
   margin-left: 5px;
   font-weight: 600;
+}
+
+/*
+# Helpers
+** common helpers **
+*/
+.ir {
+  border: 0 !important;
+  font: 0/0 a !important;
+  text-shadow: none !important;
+  color: transparent !important;
+}
+
+.clearfix,
+.cfix {
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after,
+.cfix:before,
+.cfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.cfix:after {
+  clear: both;
 }
 
 /*# sourceMappingURL=app.css.map */

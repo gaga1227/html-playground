@@ -14,6 +14,19 @@
 	color: transparent!important;
 }
 
+// Clear fix
+@mixin cfix() {
+	&:before,
+	&:after {
+		content:" "; // avoid opera space bug
+		display:table; // contain child element top margin
+	}
+	&:after {
+		clear:both;
+	}
+	*zoom:1; // For IE 6/7 only
+}
+
 //Text Truncate with elipsis
 @mixin text-truncate() {
 	overflow: hidden;
@@ -29,6 +42,14 @@
 	background-color: $startColor;
 	background-image: -webkit-linear-gradient($startColor, $endColor);
 	background-image: linear-gradient($startColor, $endColor);
+}
+
+// Box-shadow
+@mixin box-shadow($shadows...) {
+	@if($shadows != null) {
+		-webkit-box-shadow: $shadows;
+		box-shadow: $shadows;
+	}
 }
 
 // input placeholder
