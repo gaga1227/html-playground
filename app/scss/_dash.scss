@@ -42,7 +42,8 @@
 		padding: 0;
 		overflow: hidden;
 		background: #fff;
-		border-radius: 50%;
+		// @include gradient($ios7YellowGradient1, $ios7YellowGradient2);
+		border-radius: 22.5%;
 		text-align: center;
 		line-height: 90px;
 		@include box-shadow( 0 2px 6px rgba(0,0,0,0.2), 0 6px 18px rgba(0,0,0,0.1) );
