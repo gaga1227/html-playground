@@ -55,6 +55,150 @@ body {
   background: #0063c2;
 }
 
+.btnPattern {
+  display: inline-block;
+  position: relative;
+  width: 230px;
+  height: 120px;
+  margin: 10px;
+  padding: 0.75em 1.5em;
+  color: #5959cf;
+  background: #fff;
+  border-top: 2px solid currentColor;
+  font-size: 13px;
+  line-height: 1.5em;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > span,
+.btnPattern > a {
+  display: block;
+  width: 100%;
+  margin: 0 0 1px 0;
+  color: #8f8f94;
+  font-weight: 400;
+  line-height: 1.5em;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > span i,
+.btnPattern > a i {
+  display: inline-block;
+  width: 16px;
+  color: #c7c7cc;
+}
+.btnPattern > .title {
+  color: inherit;
+  margin: 5px 0 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25em;
+  -webkit-transition: none 0.25s ease-in-out;
+  transition: none 0.25s ease-in-out;
+}
+.btnPattern > .info b {
+  display: inline-block;
+  width: 65px;
+}
+.btnPattern > .actions {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > .actions:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.03);
+}
+.btnPattern .btnAction {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern .btnAction, .btnPattern .btnAction:before {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none !important;
+}
+.btnPattern .btnAction.view {
+  color: #007df5;
+  background: rgba(0, 125, 245, 0.15);
+}
+.btnPattern .btnAction.copy {
+  color: #fc9436;
+  background: rgba(252, 148, 54, 0.15);
+}
+.btnPattern .btnAction.remove {
+  color: #ff3838;
+  background: rgba(255, 56, 56, 0.15);
+}
+.btnPattern .btnAction:hover {
+  color: #fff;
+}
+.btnPattern .btnAction:hover.view {
+  background: #007df5;
+}
+.btnPattern .btnAction:hover.copy {
+  background: #fc9436;
+}
+.btnPattern .btnAction:hover.remove {
+  background: #ff3838;
+}
+.btnPattern:hover {
+  color: #ff2b57;
+  padding-right: 40px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.btnPattern:hover .actions {
+  width: 40px;
+  opacity: 1;
+}
+.btnPattern.new:before {
+  content: 'new';
+  display: inline-block;
+  position: absolute;
+  top: -15px;
+  left: 0px;
+  width: auto;
+  max-width: 50%;
+  height: 15px;
+  margin: 0;
+  padding: 0 4px;
+  color: #fff;
+  background: #ff3838;
+  font-size: 10px;
+  line-height: 15px;
+  text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 /*
 # typography
 ** basic type module styles **
@@ -314,119 +458,6 @@ select:focus {
   text-align: left;
 }
 
-.btnPattern {
-  display: inline-block;
-  position: relative;
-  width: 230px;
-  height: 120px;
-  margin: 10px;
-  padding: 0.75em 1.5em;
-  background: #fff;
-  font-size: 13px;
-  line-height: 1.5em;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-  border-radius: 2px;
-}
-.btnPattern > span,
-.btnPattern > a {
-  display: block;
-  width: 100%;
-  margin: 0 0 1px 0;
-  color: #8f8f94;
-  font-weight: 400;
-  line-height: 1.5em;
-  text-decoration: none;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.btnPattern > span i,
-.btnPattern > a i {
-  display: inline-block;
-  width: 16px;
-  color: #c7c7cc;
-}
-.btnPattern > .title {
-  color: #5959cf;
-  margin: 5px 0 10px 0;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.25em;
-}
-.btnPattern > .title:hover {
-  color: #ff2b57;
-}
-.btnPattern > .info b {
-  display: inline-block;
-  width: 65px;
-}
-.btnPattern > .actions {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 100%;
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.btnPattern .btnAction {
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.btnPattern .btnAction, .btnPattern .btnAction:before {
-  display: block;
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
-  padding: 0;
-  overflow: hidden;
-  font-size: 24px;
-  line-height: 40px;
-  text-align: center;
-  text-decoration: none !important;
-}
-.btnPattern .btnAction.view {
-  color: #007df5;
-  background: rgba(0, 125, 245, 0.15);
-}
-.btnPattern .btnAction.copy {
-  color: #fc9436;
-  background: rgba(252, 148, 54, 0.15);
-}
-.btnPattern .btnAction.remove {
-  color: #ff3838;
-  background: rgba(255, 56, 56, 0.15);
-}
-.btnPattern .btnAction:hover {
-  color: #fff;
-}
-.btnPattern .btnAction:hover.view {
-  background: #007df5;
-}
-.btnPattern .btnAction:hover.copy {
-  background: #fc9436;
-}
-.btnPattern .btnAction:hover.remove {
-  background: #ff3838;
-}
-.btnPattern:hover {
-  padding-right: 40px;
-  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-.btnPattern:hover .actions {
-  width: 40px;
-  opacity: 1;
-}
-
 /*
 # pattern view
 ** all styles in pattern view **
@@ -451,6 +482,21 @@ select:focus {
   height: 60px;
   color: #fff;
   background: #007df5;
+}
+.app-pattern-header .logo {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+}
+.app-pattern-header .logo img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
 }
 .app-pattern-header .heading {
   max-width: 400px;
