@@ -7,7 +7,7 @@ angular.module('playground',
 		$stateProvider
 			.state('home', {
 				url: '/',
-				templateUrl: 'partials/home.html',
+				templateUrl: 'partials/dash.html',
 				controller: 'HomeController'
 			})
 			.state('pattern', {

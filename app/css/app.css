@@ -251,7 +251,7 @@ select:focus {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: rgba(199, 199, 204, 0.15);
+  background: rgba(199, 199, 204, 0.05);
 }
 
 .app-dash {
@@ -263,7 +263,7 @@ select:focus {
   top: 0;
   height: 80px;
   color: #fff;
-  background: #fff;
+  background: #007df5;
   z-index: 10;
 }
 .app-dash-header .logo {
@@ -275,8 +275,7 @@ select:focus {
   margin: 0 0 -30px -45px;
   padding: 0;
   overflow: hidden;
-  color: #ffc947;
-  background: #007df5;
+  background: #fff;
   border-radius: 50%;
   text-align: center;
   line-height: 90px;
@@ -319,7 +318,7 @@ select:focus {
   display: inline-block;
   position: relative;
   width: 230px;
-  height: 12em;
+  height: 120px;
   margin: 10px;
   padding: 0.75em 1.5em;
   background: #fff;
@@ -329,24 +328,13 @@ select:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.25s ease-in-out;
   transition: all 0.25s ease-in-out;
-}
-.btnPattern > .utils {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 100%;
-  overflow: hidden;
-  opacity: 0;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  border-radius: 2px;
 }
 .btnPattern > span,
 .btnPattern > a {
   display: block;
   width: 100%;
-  margin: 0 0 5px 0;
+  margin: 0 0 1px 0;
   color: #8f8f94;
   font-weight: 400;
   line-height: 1.5em;
@@ -366,20 +354,75 @@ select:focus {
 .btnPattern > .title {
   color: #5959cf;
   margin: 5px 0 10px 0;
-  padding: 0 0 10px 0;
   font-size: 18px;
   font-weight: 600;
   line-height: 1.25em;
-  border-bottom: 1px solid #e2e2e4;
-  white-space: normal;
 }
 .btnPattern > .title:hover {
   color: #ff2b57;
 }
+.btnPattern > .info b {
+  display: inline-block;
+  width: 65px;
+}
+.btnPattern > .actions {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern .btnAction {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern .btnAction, .btnPattern .btnAction:before {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none !important;
+}
+.btnPattern .btnAction.view {
+  color: #007df5;
+  background: rgba(0, 125, 245, 0.15);
+}
+.btnPattern .btnAction.copy {
+  color: #fc9436;
+  background: rgba(252, 148, 54, 0.15);
+}
+.btnPattern .btnAction.remove {
+  color: #ff3838;
+  background: rgba(255, 56, 56, 0.15);
+}
+.btnPattern .btnAction:hover {
+  color: #fff;
+}
+.btnPattern .btnAction:hover.view {
+  background: #007df5;
+}
+.btnPattern .btnAction:hover.copy {
+  background: #fc9436;
+}
+.btnPattern .btnAction:hover.remove {
+  background: #ff3838;
+}
 .btnPattern:hover {
   padding-right: 40px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
-.btnPattern:hover .utils {
+.btnPattern:hover .actions {
   width: 40px;
   opacity: 1;
 }
