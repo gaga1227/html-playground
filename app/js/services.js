@@ -21,6 +21,14 @@ angular.module('playground')
 		reposPath: 'repos',
 		suffix: '.json',
 
+		//template objects
+		tmplNewPattern: {
+			author: 'JohnnyX',
+			html: '<h1>Welcome to New Pattern!</h1>',
+			repo: '-NOREPO-',
+			title: 'New Pattern'
+		},
+
 		//ace editor options
 		editorOptions: {
 			// maxLines: 'Infinity',
@@ -177,7 +185,7 @@ angular.module('playground')
 // -------------------------------------------------------------------------------------------
 .service('patternService', ['staticFactory', '$http', function(staticFactory, $http) {
 	var config = {
-		cache: true
+		cache: false
 	};
 	this.getPatterns = function() {
 		var s = staticFactory;

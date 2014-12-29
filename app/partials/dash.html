@@ -10,20 +10,27 @@
 	<div class="app-dash-main">
 		<!-- pattern list -->
 		<div class="app-patterns-list cfix">
-			<div class="btnPattern new">
-				<span class="title">My Hello Pattern!</span>
-				<span class="info repo"><b>Repo</b><span>Bootstrap 3.3.1</span></span></span>
-				<span class="info author"><b>Author</b><span>JohnnyX</span></span>
-				<span class="info date"><b>Updated</b><span>Fri Dec 19 2014</span></span>
+			<!-- pattern item -->
+			<div class="btnPattern"
+				ng-repeat="pattern in patterns|objToArr|orderBy:'lastupdate':true track by pattern.id">
+				<span class="title" ng-bind="pattern.title"></span>
+				<span class="info repo"><b>Repo</b><span ng-bind="::pattern.repo"></span></span></span>
+				<span class="info author"><b>Author</b><span ng-bind="::pattern.author"></span></span>
+				<span class="info date"><b>Updated</b><span ng-bind="::pattern.lastupdate"></span></span>
 				<div class="actions">
 					<a class="btnAction view ion-eye" title="View/Edit"
-						href="#pattern/BS-001"></a>
-					<a class="btnAction copy ion-fork-repo" title="Duplicate" href=""
-						ng-click="copyPattern('BS-001')"></a>
-					<a class="btnAction remove ion-trash-a" title="Remove" href=""
-						ng-click="deletePattern('BS-001')"></a>
+						href="#pattern/{{::pattern.id}}"></a>
+					<a class="btnAction copy ion-fork-repo" title="Duplicate"
+						href="" ng-click="copyPattern(pattern.id)"></a>
+					<a class="btnAction remove ion-trash-a" title="Remove"
+						href="" ng-click="deletePattern(pattern.id)"></a>
 				</div>
 			</div>
+
+			<!-- button new pattern -->
+			<a class="btnNewPattern ion-plus-round" title="Add New Pattern"
+				href="" ng-click="newPattern()">
+			</a>
 		</div>
 	</div>
 	<!-- dashboard aside

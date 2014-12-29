@@ -189,3 +189,42 @@
 		}
 	}
 }
+
+// btn new pattern
+.btnNewPattern {
+	display: inline-block;
+	position: relative;
+	width: 230px;
+	height: 120px;
+	margin: 10px;
+	padding: 0;
+	overflow: hidden;
+	color: $ios7Silver;
+	text-decoration: none!important;
+
+	//icon
+	&:before {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 1.4em;
+		height: 1.4em;
+		margin: -0.7em 0 0 -0.7em;
+		padding: 0.2em;
+		background: fade-out($ios7Silver, 0.75);
+		border-radius: 50%;
+		font-size: 56px;
+		text-align: center;
+		@include transition( all, $transSpeed );
+	}
+
+	//interactions
+	&:hover {
+		color: #fff;
+		&:before {
+			background: $ios7Purple;
+			@include transform(scale(1.1));
+		}
+	}
+}
