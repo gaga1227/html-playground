@@ -3,7 +3,7 @@ angular.module('playground')
 	'$scope', '$location', 'patternService', 'staticFactory', 'utilsFactory',
 	function($scope, $location, patternService, staticFactory, utilsFactory) {
 
-	// utils
+	// vars and utils
 	// -------------------------------------------------------------------------------------------
 
 	// load patterns data and init callback
@@ -65,9 +65,10 @@ angular.module('playground')
 			request.then(function(){
 				$scope.patterns[newPatternID] = newPatternObj;
 				$location.path( '/pattern/' + newPatternID );
-				console.log('[dash.newPattern]: added new pattern ' + newPatternID + ' in cloud!');
+				console.log('[dash.newPattern]: Added new pattern ' + newPatternID + ' to cloud!');
 			}, function(){
-
+				console.log('[dash.newPattern]: Failed adding new pattern ' + newPatternID + ' to cloud!');
+				alert('Failed adding new pattern, try again!');
 			});
 		}
 	};
@@ -86,7 +87,7 @@ angular.module('playground')
 
 			//exit
 			if (patternsData[targetPatternID] == undefined) {
-				console.log('[patternService.onPatternsData]: ', 'targetPatternID does not exist!');
+				console.log('[dash.copyPattern]: ', 'targetPatternID does not exist!');
 				return false;
 			}
 
@@ -108,7 +109,8 @@ angular.module('playground')
 				$location.path( '/pattern/' + newPatternID );
 				console.log('[dash.copyPattern]: ', targetPatternID + ' copied to ' + newPatternID + ' in cloud!');
 			}, function(){
-
+				console.log('[dash.copyPattern]: ', targetPatternID + ' failed copying to ' + newPatternID + ' in cloud!');
+				alert('Failed duplicating pattern, try again!');
 			});
 		}
 	};
@@ -126,7 +128,7 @@ angular.module('playground')
 
 			//exit
 			if (patternsData[targetPatternID] == undefined) {
-				console.log('[patternService.onPatternsData]: ', 'targetPatternID does not exist!');
+				console.log('[dash.deletePattern]: ', 'targetPatternID does not exist!');
 				return false;
 			}
 
@@ -136,7 +138,8 @@ angular.module('playground')
 				delete $scope.patterns[targetPatternID];
 				console.log('[dash.deletePattern]: ', targetPatternID + ' deleted in cloud!');
 			}, function(){
-
+				console.log('[dash.deletePattern]: ', targetPatternID + ' failed deleting in cloud!');
+				alert('Failed removing pattern, try again!');
 			});
 		}
 	};

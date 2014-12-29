@@ -1,6 +1,6 @@
 
 //colors
-@import "_ios7colors.scss";
+@import "../assets/_ios7colors.scss";
 $themeBlue: #2a9fd8;
 $invalid: $ios7Red;
 
@@ -11,6 +11,7 @@ $baseFontFamily: 'Lato', sans-serif;
 //transition and animations
 $transSpeed: 0.25s;
 $transEasing: ease-in-out;
+$perspective: 80px;
 
 //layout
 $appMinWidth: 650px;

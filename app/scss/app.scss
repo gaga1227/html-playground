@@ -1,21 +1,21 @@
 //vars and utils
-@import "_vars.scss";
-@import "_mixins.scss";
+@import "utils/_vars.scss";
+@import "utils/_mixins.scss";
 
 //resets
-@import "_reset.scss";
+@import "utils/_reset.scss";
 
 //UI modules
-@import "_buttons.scss";
-@import "_typography.scss";
-@import "_forms.scss";
-@import "_sections.scss";
+@import "modules/_typography.scss";
+@import "modules/_buttons.scss";
+@import "modules/_forms.scss";
+@import "modules/_sections.scss";
 
-//app modules
-@import "_container.scss";
-@import "_dash.scss";
-@import "_pattern.scss";
-@import "_settings.scss";
+//app views
+@import "views/_appcontainer.scss";
+@import "views/_dash.scss";
+@import "views/_pattern.scss";
+@import "views/_settings.scss";
 
-//helpers
-@import "_helpers.scss";
+//helpers and overrides
+@import "utils/_helpers.scss";

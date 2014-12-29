@@ -187,10 +187,6 @@ angular.module('playground')
 	var config = {
 		cache: false
 	};
-	this.getPatterns = function() {
-		var s = staticFactory;
-		return $http.get(s.webServiceURL + s.patternsPath + s.suffix, config);
-	};
 	this.getPattern = function(id) {
 		var s = staticFactory;
 		return $http.get(s.webServiceURL + s.patternsPath + '/' + id + s.suffix, config);
@@ -202,5 +198,9 @@ angular.module('playground')
 	this.deletePattern = function(id) {
 		var s = staticFactory;
 		return $http.delete(s.webServiceURL + s.patternsPath + '/' + id + s.suffix);
+	};
+	this.getPatterns = function() {
+		var s = staticFactory;
+		return $http.get(s.webServiceURL + s.patternsPath + s.suffix, config);
 	};
 }]);
