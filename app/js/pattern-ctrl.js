@@ -1,7 +1,7 @@
 angular.module('playground')
 .controller('PatternController', [
-	'$scope', '$sce', '$q', 'patternService', 'repoService', 'staticFactory', 'utilsFactory',
-	function($scope, $sce, $q, patternService, repoService, staticFactory, utilsFactory) {
+	'$scope', '$sce', '$q', '$stateParams', 'patternService', 'repoService', 'staticFactory', 'utilsFactory',
+	function($scope, $sce, $q, $stateParams, patternService, repoService, staticFactory, utilsFactory) {
 
 	// vars and utils
 	// -------------------------------------------------------------------------------------------
@@ -153,13 +153,19 @@ angular.module('playground')
 		return utilsFactory.getDisplayTime(time);
 	}
 
+	// state params
+	// -------------------------------------------------------------------------------------------
+
+	//target pattern id
+	var patternID = $stateParams.id;
+
 	// view pattern/repos data
 	// -------------------------------------------------------------------------------------------
 
 	//load pattern/repos data
 	var patternDataPromises = [];
 	patternDataPromises.push( repoService.getRepos() );
-	patternDataPromises.push( patternService.getPattern('BS-001') );
+	patternDataPromises.push( patternService.getPattern(patternID) );
 
 	$q.all(patternDataPromises)
 		.then(function(result){

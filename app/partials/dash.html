@@ -11,14 +11,17 @@
 		<!-- pattern list -->
 		<div class="app-patterns-list cfix">
 			<div class="btnPattern new">
-				<a class="title" href="#pattern">My Hello Pattern!</a>
-				<span class="info repo"><b>Repo</b>Bootstrap 3.3.1</span>
-				<span class="info author"><b>Author</b>JohnnyX</span>
-				<span class="info date"><b>Updated</b>Fri Dec 19 2014</span>
+				<span class="title">My Hello Pattern!</span>
+				<span class="info repo"><b>Repo</b><span>Bootstrap 3.3.1</span></span></span>
+				<span class="info author"><b>Author</b><span>JohnnyX</span></span>
+				<span class="info date"><b>Updated</b><span>Fri Dec 19 2014</span></span>
 				<div class="actions">
-					<a class="btnAction view ion-eye" href="#pattern" title="View/Edit"></a>
-					<a class="btnAction copy ion-fork-repo" href="#newPattern" title="Duplicate"></a>
-					<a class="btnAction remove ion-trash-a" href="" ng-click="" title="Remove"></a>
+					<a class="btnAction view ion-eye" title="View/Edit"
+						href="#pattern/BS-001"></a>
+					<a class="btnAction copy ion-fork-repo" title="Duplicate" href=""
+						ng-click="copyPattern('BS-001')"></a>
+					<a class="btnAction remove ion-trash-a" title="Remove" href=""
+						ng-click="deletePattern('BS-001')"></a>
 				</div>
 			</div>
 		</div>

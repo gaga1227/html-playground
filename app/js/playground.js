@@ -11,7 +11,7 @@ angular.module('playground',
 				controller: 'DashController'
 			})
 			.state('pattern', {
-				url: '/pattern:id',
+				url: '/pattern/:id',
 				templateUrl: 'partials/pattern.html',
 				controller: 'PatternController'
 			});

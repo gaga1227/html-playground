@@ -191,4 +191,8 @@ angular.module('playground')
 		var s = staticFactory;
 		return $http.put(s.webServiceURL + s.patternsPath + '/' + id + s.suffix, patternObj);
 	};
+	this.deletePattern = function(id) {
+		var s = staticFactory;
+		return $http.delete(s.webServiceURL + s.patternsPath + '/' + id + s.suffix);
+	};
 }]);
