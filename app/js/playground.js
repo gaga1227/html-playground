@@ -8,7 +8,7 @@ angular.module('playground',
 			.state('home', {
 				url: '/',
 				templateUrl: 'partials/dash.html',
-				controller: 'HomeController'
+				controller: 'DashController'
 			})
 			.state('pattern', {
 				url: '/pattern:id',

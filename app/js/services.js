@@ -160,27 +160,35 @@ angular.module('playground')
 // repo service
 // -------------------------------------------------------------------------------------------
 .service('repoService', ['staticFactory', '$http', function(staticFactory, $http) {
+	var config = {
+		cache: true
+	};
 	this.getRepos = function() {
 		var s = staticFactory;
-		return $http.get(s.webServiceURL + s.reposPath + s.suffix);
+		return $http.get(s.webServiceURL + s.reposPath + s.suffix, config);
 	};
 	this.getRepo = function(id) {
 		var s = staticFactory;
-		return $http.get(s.webServiceURL + s.reposPath + '/' + id + s.suffix);
+		return $http.get(s.webServiceURL + s.reposPath + '/' + id + s.suffix, config);
 	};
 }])
 
 // pattern service
 // -------------------------------------------------------------------------------------------
 .service('patternService', ['staticFactory', '$http', function(staticFactory, $http) {
+	var config = {
+		cache: true
+	};
+	this.getPatterns = function() {
+		var s = staticFactory;
+		return $http.get(s.webServiceURL + s.patternsPath + s.suffix, config);
+	};
 	this.getPattern = function(id) {
 		var s = staticFactory;
-		return $http.get(s.webServiceURL + s.patternsPath + '/' + id + s.suffix);
+		return $http.get(s.webServiceURL + s.patternsPath + '/' + id + s.suffix, config);
 	};
 	this.putPattern = function(id, patternObj) {
 		var s = staticFactory;
-		var data = {};
-		data[id] = patternObj;
-		return $http.put(s.webServiceURL + s.patternsPath + s.suffix, data);
+		return $http.put(s.webServiceURL + s.patternsPath + '/' + id + s.suffix, patternObj);
 	};
 }]);
