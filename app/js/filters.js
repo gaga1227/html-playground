@@ -9,6 +9,14 @@ angular.module('playground')
 		}
 		return arr;
 	}
+}])
+
+// convert time number to display string
+.filter('toDisplayTime', ['utilsFactory', function(utilsFactory){
+	return function(input) {
+		var output = utilsFactory.getDisplayTime(input);
+		return output;
+	}
 }]);
 
 
