@@ -9,7 +9,9 @@ $baseFontSize: 13px;
 $baseFontFamily: 'Lato', sans-serif;
 
 //transition and animations
+@import "../assets/_pennerseasings.scss";
 $transSpeed: 0.25s;
+$viewTransSpeed: 0.4s;
 $transEasing: ease-in-out;
 $perspective: 400px;
 
