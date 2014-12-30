@@ -13,6 +13,9 @@
 			<!-- pattern item -->
 			<div class="btnPattern"
 				ng-repeat="pattern in patterns|objToArr|orderBy:'lastupdate':true track by pattern.id">
+				<div class="tags">
+					<span class="tag new" ng-class="{new:isNewPattern(pattern.lastupdate)}"></span>
+				</div>
 				<span class="title" ng-bind="pattern.title"></span>
 				<span class="info repo"><b>Repo</b><span ng-bind="::pattern.repo"></span></span></span>
 				<span class="info author"><b>Author</b><span ng-bind="::pattern.author"></span></span>

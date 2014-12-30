@@ -36,6 +36,13 @@ angular.module('playground')
 		$scope.patterns = data;
 	});
 
+	//check if pattern is newly created/updated
+	$scope.isNewPattern = function(time){
+		return utilsFactory.getDisplayTime(time) == 'Today'
+			? true
+			: false;
+	};
+
 	// view methods
 	// -------------------------------------------------------------------------------------------
 

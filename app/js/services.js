@@ -86,6 +86,10 @@ angular.module('playground')
 
 		//format time point into display text
 		getDisplayTime: function(time) {
+			if (new Date(time) == 'Invalid Date') {
+				console.log('[services.getDisplayTime]: Invalid Date');
+				return false;
+			}
 			var timeDisplay = '';
 			var date = new Date(time).toDateString();
 			var today = new Date().toDateString();
