@@ -36,8 +36,12 @@ angular.module('playground')
 		//inject list of dependencies
 		$tgt.empty();
 		if (list && list.length) {
-			$.each(list, function(idx, ele){
-				$tgt.append( utilsFactory.getRepoFile($scope.repo.path, ele, ext) );
+			$.each(list, function(idx, file){
+				if (file.ignore) {
+					console.log('[pattern.updateHeadDependencies]: skipped file: ' + file.filename + '.' + ext);
+				} else {
+					$tgt.append( utilsFactory.getRepoFile($scope.repo.path, file, ext) );
+				}
 			});
 		}
 	};

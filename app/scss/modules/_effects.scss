@@ -15,7 +15,9 @@ An element with two faces will flip upon hover
 	//face
 	.face {
 		position: absolute;
-		@include transition(all, $speed, $easing);
+		@include perspective-origin();
+		@include backface-visibility();
+		@include transition(all, $transSpeed, $transEasing);
 	}
 
 	//flip direction - default

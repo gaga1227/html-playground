@@ -194,37 +194,54 @@
 .btnNewPattern {
 	display: inline-block;
 	position: relative;
-	width: 230px;
-	height: 120px;
-	margin: 10px;
+	width: 80px;
+	height: 80px;
+	margin: 30px;
 	padding: 0;
 	overflow: hidden;
 	color: $ios7Silver;
 	text-decoration: none!important;
 
-	//icon
-	&:before {
+	//common
+	.icon,
+	.label {
 		display: block;
 		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 1.4em;
-		height: 1.4em;
-		margin: -0.7em 0 0 -0.7em;
-		padding: 0.2em;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
 		background: fade-out($ios7Silver, 0.75);
 		border-radius: 50%;
-		font-size: 56px;
 		text-align: center;
 		@include transition( all, $transSpeed );
+	}
+
+	//icon
+	.icon {
+		font-size: 56px;
+		&:before {
+			display: block;
+			line-height: 80px;
+		}
+	}
+
+	//label
+	.label {
+		padding: 20px 0;
+		font-size: 16px;
+		line-height: 18px;
+		font-weight: 600;
 	}
 
 	//interactions
 	&:hover {
 		color: #fff;
-		&:before {
-			background: $ios7Purple;
-			@include transform(scale(1.1));
+		.icon,
+		.label {
+			background: $ios7Orange;
 		}
 	}
 }
