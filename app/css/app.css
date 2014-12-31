@@ -99,7 +99,7 @@ p {
   text-decoration: none !important;
 }
 .btnIcon:hover, .btnIcon.active {
-  background: #0063c2;
+  background: #fb7904;
 }
 
 .btnPattern {
@@ -544,24 +544,29 @@ select:focus {
   top: 0;
   height: 80px;
   color: #fff;
-  background: #007df5;
+  background: #fc9436;
   z-index: 10;
 }
 .app-dash-header .logo {
   position: absolute;
   bottom: 0;
   left: 50%;
-  width: 90px;
-  height: 90px;
-  margin: 0 0 -30px -45px;
-  padding: 0;
+  width: 100px;
+  height: 100px;
+  margin: 0 0 -40px -50px;
+  padding: 5px;
   overflow: hidden;
   background: #fff;
   border-radius: 22.5%;
   text-align: center;
   line-height: 90px;
-  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 6px 18px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 6px 0px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 0px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+.app-dash-header .logo img {
+  display: block;
+  width: 90px;
+  height: 90px;
 }
 
 .app-dash-main {
@@ -618,7 +623,7 @@ select:focus {
   top: 0;
   height: 60px;
   color: #fff;
-  background: #007df5;
+  background: #fc9436;
 }
 .app-pattern-header .logo {
   display: inline-block;
@@ -708,13 +713,13 @@ select:focus {
   overflow: hidden;
   z-index: 100;
   color: #fff;
-  background: #0063c2;
+  background: #fb7904;
   -webkit-transform: translateX(100%);
   -ms-transform: translateX(100%);
   transform: translateX(100%);
 }
 .app-settings .app-sec {
-  border-top: 1px solid #0070dc;
+  border-top: 1px solid #fc871d;
 }
 .app-settings .app-sec:first-child {
   border-top: none;

@@ -28,7 +28,7 @@
 	top: 0;
 	height: 80px;
 	color: #fff;
-	background: $ios7Blue;
+	background: $ios7Orange;
 	z-index: 10;
 
 	//brand logo
@@ -36,17 +36,21 @@
 		position: absolute;
 		bottom: 0;
 		left: 50%;
-		width: 90px;
-		height: 90px;
-		margin: 0 0 -30px -45px;
-		padding: 0;
+		width: 100px;
+		height: 100px;
+		margin: 0 0 -40px -50px;
+		padding: 5px;
 		overflow: hidden;
 		background: #fff;
-		// @include gradient($ios7YellowGradient1, $ios7YellowGradient2);
 		border-radius: 22.5%;
 		text-align: center;
 		line-height: 90px;
-		@include box-shadow( 0 2px 6px rgba(0,0,0,0.2), 0 6px 18px rgba(0,0,0,0.1) );
+		@include box-shadow( 0 6px 0px rgba(0,0,0,0.06), 0 6px 18px rgba(0,0,0,0.15) );
+		img {
+			display: block;
+			width: 90px;
+			height: 90px;
+		}
 	}
 }
 
