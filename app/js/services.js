@@ -26,12 +26,11 @@ angular.module('playground')
 			author: 'JohnnyX',
 			repo: 'BS-331',
 			title: 'New Pattern',
-			html: '<div class=\"container-fluid\"><div class=\"row\"><div class=\"col-md-6 col-md-offset-3 text-center\"><h1><b>Welcome to Pattern Playground!</b></h1><p class=\"lead\">The <b>Pattern Playground</b>provides you a friendly environment to play with your HTML snippets with different CSS repositories.</p><hr><h3>Features</h3><ul class=\"text-left\"><li>To use the playground, all you need to know is some HTML markup.</li><li>All patterns are safely saved in cloud via <a href=\"https://www.firebase.com/\" target=\"_blank\">Firebase</a>.</li><li>You can <b>create</b>new patterns, <b>edit</b>and <b>save</b>existing ones, or <b>delete</b>them if not longer needed.</li><li>You can choose from popular CSS frameworks like <a href=\"http://getbootstrap.com/css/\" target=\"_blank\">Bootstrap</a>, <a href=\"http://foundation.zurb.com/docs/\" target=\"_blank\">Foundation</a>, and built-in private repositories.</li></ul><h3>How to use</h3><p>Coming soon...</p><h3>Credits</h3><p>Brought to you by Johnny Xu</p><hr><p><small>Version: 0.1<br>2014.12.30</small></p></div></div></div>'
+			html: '<div class=\"container\"><div class=\"row\"><div class=\"col-md-8 col-md-offset-2 text-center\"><h1><b>Welcome to Pattern Playground!</b></h1><p class=\"lead\">The <b>Pattern Playground</b>provides you a friendly environment to play with your HTML snippets with different CSS repositories.</p><hr><h3>Features</h3><ul class=\"text-left\"><li>To use the playground, all you need to know is some HTML markup.</li><li>All patterns are safely saved in cloud via <a href=\"https://www.firebase.com/\" target=\"_blank\">Firebase</a>.</li><li>You can <b>create</b>new patterns, <b>edit</b>and <b>save</b>existing ones, or <b>delete</b>them if not longer needed.</li><li>You can choose from popular CSS frameworks like <a href=\"http://getbootstrap.com/css/\" target=\"_blank\">Bootstrap</a>, <a href=\"http://foundation.zurb.com/docs/\" target=\"_blank\">Foundation</a>, and built-in private repositories.</li></ul><h3>How to use</h3><p>Coming soon...</p><h3>Credits</h3><p>Brought to you by Johnny Xu</p><hr><p><small>Version: 0.1<br>2014.12.30</small></p></div></div></div>'
 		},
 
 		//ace editor options
 		editorOptions: {
-			// maxLines: 'Infinity',
 			vScrollBarAlwaysVisible: true,
 			showInvisibles: true,
 			fontSize: '16px'
@@ -41,12 +40,16 @@ angular.module('playground')
 		beautifyHtmlOptions : {
 			indent_char : '\t',
 			indent_size : 1,
-			max_char : 0
+			max_char : 0,
+			unformatted: [
+				'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'li',
+				'span', 'a', 'sub', 'sup', 'b', 'i', 'u',
+			]
 		},
 		minifyHtmlOptions : {
 			removeCDATASectionsFromCDATA: true,
 			collapseWhitespace : true,
-			// conservativeCollapse : true,
+			conservativeCollapse : false,
 			collapseBooleanAttributes : true,
 			removeIgnored : true
 		}
