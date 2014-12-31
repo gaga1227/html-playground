@@ -1,5 +1,5 @@
-#Welcome to Pattern Playground!
 <div><img src="http://gaga-graphics.com/html-playground/app/imgs/logo.svg" width="160" height="160" alt="Playground"></div>
+#Welcome to Pattern Playground!
 **The Pattern Playground provides you a friendly environment to play with your HTML snippets with different CSS repositories.**
 
 ###Features
