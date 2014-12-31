@@ -71,7 +71,7 @@ angular.module('playground')
 	// -------------------------------------------------------------------------------------------
 
 	//UI mode
-	$scope.settingsActive = utilsFactory.settingsActive;
+	$scope.settingsActive = utilsFactory.settingsActive = false;
 
 	//input data for editor
 	$scope.input = '';

@@ -263,7 +263,7 @@ p {
   position: relative;
   width: 80px;
   height: 80px;
-  margin: 30px;
+  margin: 30px 85px;
   padding: 0;
   overflow: hidden;
   color: #c7c7cc;
@@ -304,76 +304,6 @@ p {
 .btnNewPattern:hover .icon,
 .btnNewPattern:hover .label {
   background: #fc9436;
-}
-
-/*
-# Effects
-Pure CSS effects, including interactive transitions and animations
-*/
-/*
-## hover flip
-An element with two faces will flip upon hover
-*/
-.hoverFlip {
-  position: relative;
-}
-.hoverFlip .face {
-  position: absolute;
-  -webkit-perspective-origin: 50% 50%;
-  perspective-origin: 50% 50%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.hoverFlip .face.front {
-  -webkit-transform: perspective(400px) rotateY(0deg);
-  -ms-transform: perspective(400px) rotateY(0deg);
-  transform: perspective(400px) rotateY(0deg);
-  opacity: 1;
-}
-.hoverFlip .face.back {
-  -webkit-transform: perspective(400px) rotateY(-180deg);
-  -ms-transform: perspective(400px) rotateY(-180deg);
-  transform: perspective(400px) rotateY(-180deg);
-  opacity: 0;
-}
-.hoverFlip:hover .face.front {
-  -webkit-transform: perspective(400px) rotateY(-180deg);
-  -ms-transform: perspective(400px) rotateY(-180deg);
-  transform: perspective(400px) rotateY(-180deg);
-  opacity: 0;
-}
-.hoverFlip:hover .face.back {
-  -webkit-transform: perspective(400px) rotateY(0deg);
-  -ms-transform: perspective(400px) rotateY(0deg);
-  transform: perspective(400px) rotateY(0deg);
-  opacity: 1;
-}
-
-.hoverFlip.CCW .face.front {
-  -webkit-transform: perspective(400px) rotateY(0deg);
-  -ms-transform: perspective(400px) rotateY(0deg);
-  transform: perspective(400px) rotateY(0deg);
-  opacity: 1;
-}
-.hoverFlip.CCW .face.back {
-  -webkit-transform: perspective(400px) rotateY(180deg);
-  -ms-transform: perspective(400px) rotateY(180deg);
-  transform: perspective(400px) rotateY(180deg);
-  opacity: 0;
-}
-.hoverFlip.CCW:hover .face.front {
-  -webkit-transform: perspective(400px) rotateY(180deg);
-  -ms-transform: perspective(400px) rotateY(180deg);
-  transform: perspective(400px) rotateY(180deg);
-  opacity: 0;
-}
-.hoverFlip.CCW:hover .face.back {
-  -webkit-transform: perspective(400px) rotateY(0deg);
-  -ms-transform: perspective(400px) rotateY(0deg);
-  transform: perspective(400px) rotateY(0deg);
-  opacity: 1;
 }
 
 /*
@@ -482,6 +412,146 @@ select:focus {
   position: relative;
   margin: 0;
   padding: 15px;
+}
+
+/*
+# Effects
+Pure CSS effects, including interactive transitions and animations
+*/
+/*
+## hover flip
+An element with two faces will flip upon hover
+*/
+.hoverFlip {
+  position: relative;
+}
+.hoverFlip .face {
+  position: absolute;
+  -webkit-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.hoverFlip .face.front {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+.hoverFlip .face.back {
+  -webkit-transform: perspective(400px) rotateY(-180deg);
+  -ms-transform: perspective(400px) rotateY(-180deg);
+  transform: perspective(400px) rotateY(-180deg);
+  opacity: 0;
+}
+.hoverFlip:hover .face.front {
+  -webkit-transform: perspective(400px) rotateY(-180deg);
+  -ms-transform: perspective(400px) rotateY(-180deg);
+  transform: perspective(400px) rotateY(-180deg);
+  opacity: 0;
+}
+.hoverFlip:hover .face.back {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+
+.hoverFlip.CCW .face.front {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+.hoverFlip.CCW .face.back {
+  -webkit-transform: perspective(400px) rotateY(180deg);
+  -ms-transform: perspective(400px) rotateY(180deg);
+  transform: perspective(400px) rotateY(180deg);
+  opacity: 0;
+}
+.hoverFlip.CCW:hover .face.front {
+  -webkit-transform: perspective(400px) rotateY(180deg);
+  -ms-transform: perspective(400px) rotateY(180deg);
+  transform: perspective(400px) rotateY(180deg);
+  opacity: 0;
+}
+.hoverFlip.CCW:hover .face.back {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+
+/*
+# Animations
+** all animations/transitions **
+*/
+[ui-view].ng-enter,
+[ui-view].ng-leave {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.btnPattern.ng-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btnPattern.ng-enter-active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btnPattern.ng-leave {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.btnPattern.ng-leave-active {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 /*
@@ -739,76 +809,6 @@ select:focus {
   display: inline-block;
   margin-left: 5px;
   font-weight: 600;
-}
-
-/*
-# Animations
-** all animations/transitions **
-*/
-[ui-view].ng-enter,
-[ui-view].ng-leave {
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-}
-
-[ui-view].ng-enter {
-  opacity: 0;
-  -webkit-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-[ui-view].ng-enter-active {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-[ui-view].ng-leave {
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-}
-
-[ui-view].ng-leave-active {
-  opacity: 0;
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.btnPattern.ng-enter {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.btnPattern.ng-enter-active {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.btnPattern.ng-leave {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-}
-
-.btnPattern.ng-leave-active {
-  -webkit-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0);
-  -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-  transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 /*

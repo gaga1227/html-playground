@@ -8,16 +8,16 @@
 //UI modules
 @import "modules/_typography.scss";
 @import "modules/_buttons.scss";
-@import "modules/_effects.scss";
 @import "modules/_forms.scss";
 @import "modules/_sections.scss";
+@import "modules/_effects.scss";
+@import "modules/_animations.scss";
 
 //app views
 @import "views/_appcontainer.scss";
 @import "views/_dash.scss";
 @import "views/_pattern.scss";
 @import "views/_settings.scss";
-@import "views/_animations.scss";
 
 //helpers and overrides
 @import "utils/_helpers.scss";
