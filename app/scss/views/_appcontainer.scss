@@ -1,0 +1,44 @@
+/*
+# App Container
+** overall app containers **
+*/
+
+// app container
+// -------------------------------------------------------------------------------------------
+.app,
+.app-view {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+// view container
+// -------------------------------------------------------------------------------------------
+
+// default
+.app-view {
+	min-width: $appMinWidth;
+	overflow: hidden;
+
+	//comps
+	.app-pattern,
+	.app-settings {
+		@include transition( all, $transSpeed );
+	}
+}
+
+// settingsActive
+.app-view.settingsActive {
+	.app-pattern {
+		width: calc( 100% - #{$settingsWidth} );
+	}
+	.app-settings {
+		@include transform( translateX(0) );
+	}
+}

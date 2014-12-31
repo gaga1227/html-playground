@@ -1,0 +1,48 @@
+/*
+# Animations
+** all animations/transitions **
+*/
+
+// app view transitons
+// -------------------------------------------------------------------------------------------
+
+[ui-view].ng-enter,
+[ui-view].ng-leave {
+	@include transition(all, $viewTransSpeed, $transEasing);
+}
+[ui-view].ng-enter {
+	opacity: 0;
+	// @include transform( scale(0.9) );
+}
+[ui-view].ng-enter-active {
+	opacity: 1;
+	// @include transform( scale(1) );
+}
+[ui-view].ng-leave {
+	opacity: 1;
+	// @include transform( scale(1) );
+}
+[ui-view].ng-leave-active {
+	opacity: 0;
+	// @include transform( scale(1.1) );
+}
+
+// btnPattern in dash view
+// -------------------------------------------------------------------------------------------
+
+.btnPattern.ng-enter {
+	@include transform( scale(0) );
+	@include transition(all, $viewTransSpeed, $easeOutBack);
+}
+.btnPattern.ng-enter-active {
+	@include transform( scale(1) );
+	@include transition(all, $viewTransSpeed, $easeOutBack);
+}
+.btnPattern.ng-leave {
+	@include transform( scale(1) );
+	@include transition(all, $viewTransSpeed, $easeInBack);
+}
+.btnPattern.ng-leave-active {
+	@include transform( scale(0) );
+	@include transition(all, $viewTransSpeed, $easeInBack);
+}

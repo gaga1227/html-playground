@@ -9,42 +9,55 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="format-detection" content="telephone=no">
+<!-- CSS:FONTS -->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900">
+<!-- CSS:RESET -->
+	<link rel="stylesheet" href="vendor/css/normalize.css">
+<!-- CSS:ASSETS -->
+	<link rel="stylesheet" href="vendor/css/ionicons/css/ionicons.min.css">
 <!-- CSS:NG -->
-	<link rel="stylesheet" href="vendor/angular/angular-csp.css">
+	<link rel="stylesheet" href="vendor/js/angular-1.3.6/angular-csp.css">
 <!-- CSS:FAMOUS
-	<link rel="stylesheet" href="vendor/famous/famous.css">
-	<link rel="stylesheet" href="vendor/famous-angular/famous-angular.css">
+	<link rel="stylesheet" href="vendor/js/famous/famous.css">
+	<link rel="stylesheet" href="vendor/js/famous-angular/famous-angular.css">
  -->
 <!-- CSS:APP -->
 	<link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body class="app">
 <!-- VIEW -->
-	<div ui-view></div>
+	<div class="app-view" ui-view></div>
 <!-- JS:LIB -->
-	<script src="vendor/modernizr-2.8.3.min.js"></script>
-	<script src="vendor/jquery-1.8.3.min.js"></script>
-	<script src="vendor/ace/ace.js"></script>
-	<script src="vendor/beautify-html.js"></script>
+	<script src="vendor/js/modernizr-2.8.3.min.js"></script>
+	<script src="vendor/js/jquery-1.8.3.min.js"></script>
+	<script src="vendor/js/ace/ace.js"></script>
+	<script src="vendor/js/beautify-html.js"></script>
+	<script src="vendor/js/htmlminifier/htmlminifier.min.js"></script>
 <!-- JS:NG -->
-	<script src="vendor/angular/angular.js"></script>
-	<script src="vendor/angular/angular-animate.js"></script>
-	<script src="vendor/angular/angular-cookies.js"></script>
-	<script src="vendor/angular/angular-touch.js"></script>
-	<script src="vendor/angular/angular-sanitize.js"></script>
-	<script src="vendor/angular/angular-resource.js"></script>
-	<script src="vendor/angular-ui/angular-ui-router.js"></script>
-	<script src="vendor/angular-ui/angular-ui-ace.js"></script>
-	<script src="vendor/angular-bindonce/bindonce.js"></script>
+	<script src="vendor/js/angular-1.3.6/angular.js"></script>
+	<script src="vendor/js/angular-1.3.6/angular-animate.js"></script>
+	<script src="vendor/js/angular-1.3.6/angular-cookies.js"></script>
+	<script src="vendor/js/angular-1.3.6/angular-touch.js"></script>
+	<script src="vendor/js/angular-1.3.6/angular-sanitize.js"></script>
+	<script src="vendor/js/angular-1.3.6/angular-resource.js"></script>
+	<script src="vendor/js/angular-ui/angular-ui-router.js"></script>
+	<script src="vendor/js/angular-ui/angular-ui-ace.js"></script>
+<!-- JS:FIREBASE
+	<script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+ -->
 <!-- JS:FAMOUS
-	<script src="vendor/famous/famous-global.js"></script>
-	<script src="vendor/famous-angular/famous-angular.js"></script>
+	<script src="vendor/js/famous/famous-global.js"></script>
+	<script src="vendor/js/famous-angular/famous-angular.js"></script>
  -->
 <!-- JS:UTILS
-	<script src="vendor/underscore.js"></script>
+	<script src="vendor/js/underscore.js"></script>
  -->
 <!-- JS:APP -->
 	<script src="js/playground.js"></script>
+	<script src="js/filters.js"></script>
+	<script src="js/services.js"></script>
+	<script src="js/dash-ctrl.js"></script>
 	<script src="js/pattern-ctrl.js"></script>
 </body>
 </html>

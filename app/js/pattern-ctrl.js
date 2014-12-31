@@ -1,41 +1,58 @@
 angular.module('playground')
-.controller('PatternCtrl', ['$scope', '$sce', function($scope, $sce) {
+.controller('PatternController', [
+	'$scope', '$sce', '$q', '$stateParams', 'patternService', 'repoService', 'staticFactory', 'utilsFactory',
+	function($scope, $sce, $q, $stateParams, patternService, repoService, staticFactory, utilsFactory) {
 
-	// view model data
+	// vars and utils
 	// -------------------------------------------------------------------------------------------
 
-	// repo data
-	$scope.repo = {
-		"id": "BS331",
-		"name": "Bootstrap 3.3.1",
-		"path": "repo/bs/",
-		"css": [
-			{ "path": "css/", "filename": "bootstrap" },
-			{ "path": "css/", "filename": "bootstrap-theme" }
-		]
+	// check if editor's html is updated compared to saved html in model
+	var isHtmlUpdated = function(){
+		//input syntax error handling
+		try {
+			minify($scope.input, staticFactory.minifyHtmlOptions);
+		} catch(e) {
+			//if getting parse errors
+			if (e.indexOf('Parse Error') != -1) {
+				console.log('[pattern.isHtmlUpdated]: ', 'Input HTML has syntax error, exit.');
+				alert('Your HTML input is not valid, fix it and try again!');
+			}
+			//return false to prevent saving/revert
+			return false;
+		}
+
+		//if no error caught from input html
+		var isUpdated = ($scope.pattern.html == minify($scope.input, staticFactory.minifyHtmlOptions))
+			? false
+			: true;
+		return isUpdated;
 	};
 
-	// pattern data
-	$scope.pattern = {
-		"id": "BS-001",
-		"title": "My First Pattern",
-		"author": "JohnnyX",
-		"jade": "",
-		"html": "<h1>Hello Pattern! <small>Secondary text<\/small><\/h1><p class=\"lead\">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.<\/p><p><button type=\"button\" class=\"btn btn-primary btn-lg\">Yes<\/button> <button type=\"button\" class=\"btn btn-default btn-lg\">No<\/button><\/p>"
+	// updated iframe head dependencies from a list
+	var updateHeadDependencies = function($tgt, list, ext){
+		//exit
+		if (!$tgt.length) return;
+		if (ext == undefined) return;
+		//inject list of dependencies
+		$tgt.empty();
+		if (list && list.length) {
+			$.each(list, function(idx, file){
+				if (file.ignore) {
+					console.log('[pattern.updateHeadDependencies]: skipped file: ' + file.filename + '.' + ext);
+				} else {
+					$tgt.append( utilsFactory.getRepoFile($scope.repo.path, file, ext) );
+				}
+			});
+		}
 	};
 
-	// ace editor
+	// ace editor init and config
 	// -------------------------------------------------------------------------------------------
 
 	// on load
 	$scope.aceLoaded = function(_editor) {
 		//options
-		_editor.setOptions({
-			// maxLines: 'Infinity',
-			vScrollBarAlwaysVisible: true,
-			showInvisibles: true,
-			fontSize: '16px'
-		});
+		_editor.setOptions(staticFactory.editorOptions);
 
 		//configure session
 		_editor.getSession()
@@ -44,64 +61,168 @@ angular.module('playground')
 		//pass ref to scope
 		$scope.editor = _editor;
 	};
+
 	// on change
 	$scope.aceChanged = function(e) {
 		// console.log(e);
 	};
 
-	// inputs
+	// view data
 	// -------------------------------------------------------------------------------------------
 
-	//beautify stored html before display
-	var style_html_options = {
-		indent_char : '\t',
-		indent_size : 1,
-		max_char : 0
+	//UI mode
+	$scope.settingsActive = utilsFactory.settingsActive = false;
+
+	//input data for editor
+	$scope.input = '';
+
+	// view methods
+	// -------------------------------------------------------------------------------------------
+
+	//save to cloud
+	$scope.save = function(){
+		//validation
+		if (!$scope.pattern.title) {
+			console.log('[pattern.save]: ', 'Pattern title is empty, exit.');
+			alert('Pattern title cannot be empty!');
+			return false;
+		}
+
+		//exit
+		if (!isHtmlUpdated()
+			&& !utilsFactory.isInputUpdated($scope.patternInfoForm.patternTitle)
+			&& !utilsFactory.isInputUpdated($scope.patternInfoForm.patternRepo)) {
+			console.log('[pattern.save]: ', 'No updates to input, exit.');
+			alert('No Valid Pattern Updates to Save!');
+			return false;
+		}
+
+		//prep time data
+		$scope.pattern.lastupdate = !isNaN($scope.pattern.lastupdate) ? $scope.pattern.lastupdate : 0;
+		$scope.pattern.lastupdate = Math.max($scope.pattern.lastupdate, new Date().getTime());
+		$scope.sincelastupdate = utilsFactory.getDisplayTimePeriod($scope.pattern.lastupdate);
+
+		//prep html data
+		$scope.input = style_html($scope.input, staticFactory.beautifyHtmlOptions);
+		$scope.pattern.html = minify($scope.input, staticFactory.minifyHtmlOptions);
+
+		//call pattern service
+		var request = patternService.putPattern($scope.pattern.id, $scope.pattern);
+		request.then(function(){
+			//reset pattern title input
+			utilsFactory.resetInput($scope.patternInfoForm, 'patternTitle');
+			utilsFactory.resetInput($scope.patternInfoForm, 'patternRepo');
+
+			console.log('[pattern.save]: ', 'updates saved in cloud!');
+			alert('Pattern Updates Saved!');
+		}, function(){
+
+		});
 	};
-	$scope.pattern.input = style_html($scope.pattern.html, style_html_options);
 
-	// display
-	// -------------------------------------------------------------------------------------------
+	//revert to last saved version
+	$scope.revert = function(){
+		//exit
+		if (!isHtmlUpdated()) {
+			console.log('[pattern.revert]: ', 'No updates to input, exit.');
+			alert('No Valid Pattern Updates to Revert!');
+			return false;
+		}
 
-	//common vars
-	var $frame = $('#app-pattern-display');
-	var $frameHead = $frame.contents().find('head');
-	var $frameBody = $frame.contents().find('body');
+		//revert input valur to stored model value
+		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
 
-	//generate repo file
-	var getRepoFile = function(file, ext) {
-		var url = $scope.repo.path + file.path + file.filename + '.' + ext;
-		var $file;
-		if (ext == 'css') {
-			$file = $('<link>');
-			$file.attr({
-				"rel" : "stylesheet",
-				"href" : url
+		console.log('[pattern.revert]: ', 'reverted back to stored html value.');
+		alert('Pattern Updates Reverted!');
+	};
+
+	//toggle settings
+	$scope.toggleSettings = function(){
+		//trigger UI update
+		utilsFactory.toggleSettings();
+
+		//update mode data
+		$scope.settingsActive = utilsFactory.settingsActive;
+
+		//if has ace editor
+		if ($scope.editor) {
+			$('.app-pattern').one(staticFactory.events.transitionEnd, function(){
+				$scope.editor.resize();
 			});
 		}
-		else if (ext == 'js') {
-			$file = $('<script></script>');
-			$file.attr({
-				"src" : url
-			});
-		}
-		return $file;
 	}
 
-	//inject repo css dependencies
-	$.each($scope.repo.css, function(idx, ele){
-		$frameHead.append( getRepoFile(ele, 'css') );
-	});
+	//convert time to display msg
+	$scope.getTimeDisplayMsg = function(time){
+		return utilsFactory.getDisplayTime(time);
+	}
 
-	//watch input value and translate to display
-	var cancelPatternInputWatch = $scope.$watch('pattern.input', function(){
-		//inject to iframe
-		$frameBody.html($scope.pattern.input);
-	});
+	// state params
+	// -------------------------------------------------------------------------------------------
 
-	//clean up watch
-	$scope.$on('destroy', function(e){
-		cancelPatternInputWatch();
-	});
+	//target pattern id
+	var patternID = $stateParams.id;
+
+	// view pattern/repos data
+	// -------------------------------------------------------------------------------------------
+
+	//load pattern/repos data
+	var patternDataPromises = [];
+	patternDataPromises.push( repoService.getRepos() );
+	patternDataPromises.push( patternService.getPattern(patternID) );
+
+	$q.all(patternDataPromises)
+		.then(function(result){
+			onPatternData(result);
+		},
+		function(){
+			console.log('[patternService.getPattern]: ', 'Failed loading pattern data.');
+			alert('Failed loading pattern data, try again!');
+		});
+
+	// pattern data handler
+	function onPatternData(result){
+		//common vars
+		var $frame = $('#app-pattern-display'),
+			$frameHead = $frame.contents().find('head'),
+			$frameBody = $frame.contents().find('body');
+
+		//set data from result to view model
+		var patternData = result[1].data,
+			repoData = result[0].data;
+
+		$scope.pattern = patternData;
+		$scope.repos = repoData;
+		$scope.repo = repoData[$scope.pattern.repo];
+
+		//inject repo css dependencies
+		updateHeadDependencies($frameHead, $scope.repo.css, 'css');
+
+		//watch input value and inject to display on update
+		var cancelPatternInputWatch = $scope.$watch('input', function(){
+			$frameBody.html($scope.input);
+		});
+
+		//watch pattern.repo value and inject assets
+		var cancelPatternRepoWatch = $scope.$watch('pattern.repo', function(){
+			//update new repo data
+			$scope.repo = repoData[$scope.pattern.repo];
+			//inject assets
+			updateHeadDependencies($frameHead, $scope.repo.css, 'css');
+
+			console.log('[WATCH:pattern.repo]: ', 'Pattern repo updated to: ' + $scope.repo.id);
+		});
+
+		//prep time data
+		$scope.sincelastupdate = utilsFactory.getDisplayTimePeriod($scope.pattern.lastupdate);
+		//prep input data for editor
+		$scope.input = style_html($scope.pattern.html, staticFactory.beautifyHtmlOptions);
+
+		//clean ups
+		$scope.$on('destroy', function(e){
+			cancelPatternInputWatch();
+			cancelPatternRepoWatch();
+		});
+	}
 
 }]);

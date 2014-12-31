@@ -1,0 +1,48 @@
+<!-- dashboard container -->
+<div class="app-dash" id="app-dash">
+	<!-- dashboard header -->
+	<div class="app-dash-header">
+		<h1 class="logo" title="Pattern Playground">
+			<img src="imgs/logo.svg" alt="" width="90" height="90">
+		</h1>
+	</div>
+	<!-- dashboard main -->
+	<div class="app-dash-main">
+		<!-- pattern list -->
+		<div class="app-patterns-list cfix">
+			<!-- pattern item -->
+			<div class="btnPattern"
+				ng-repeat="pattern in patterns|objToArr|orderBy:'lastupdate':true track by pattern.id">
+				<div class="tags">
+					<span class="tag new" ng-if="isNewPattern(pattern.lastupdate)"></span>
+				</div>
+				<a class="title" ng-bind="pattern.title" href="#pattern/{{::pattern.id}}"></a>
+				<span class="info repo"><b>Repo</b><span ng-bind="::pattern.repo"></span></span></span>
+				<span class="info author"><b>Author</b><span ng-bind="::pattern.author"></span></span>
+				<span class="info date"><b>Updated</b><span ng-bind="::pattern.lastupdate|toDisplayTime"></span></span>
+				<div class="actions">
+					<a class="btnAction view ion-eye" title="View/Edit"
+						href="#pattern/{{::pattern.id}}"></a>
+					<a class="btnAction copy ion-fork-repo" title="Duplicate"
+						href="" ng-click="copyPattern(pattern.id)"></a>
+					<a class="btnAction remove ion-trash-a" title="Remove"
+						href="" ng-click="deletePattern(pattern.id)"></a>
+				</div>
+			</div>
+			<!-- button new pattern -->
+			<a class="btnNewPattern hoverFlip" href="" ng-click="newPattern()">
+				<i class="icon ion-plus-round face front"></i>
+				<span class="label face back">New Pattern</span>
+			</a>
+		</div>
+	</div>
+	<!-- dashboard aside
+	<div class="app-dash-aside">
+		<h3>aside</h3>
+	</div>
+	-->
+	<!-- dashboard footer -->
+	<div class="app-dash-footer">
+
+	</div>
+</div>

@@ -1,4 +1,667 @@
-/* common */
+/*
+# iOS7 colors
+** Convereted from https://github.com/claaslange/iOS7Colors **
+*/
+/*
+# Penners easing functions
+** Custom easings for transiotions **
+*/
+/*
+# mixins
+** common utils mixins **
+*/
+/*
+# reset
+** custom resets on top of normalise **
+*/
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  color: #000;
+  background: #fff;
+  font-family: "Lato", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*
+# typography
+** basic type module styles **
+*/
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  margin: 1.414em 0 0.5em;
+  color: inherit;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+h1, .h1 {
+  font-size: 52px;
+}
+
+h2, .h2 {
+  font-size: 37px;
+}
+
+h3, .h3 {
+  font-size: 26px;
+}
+
+h4, .h4 {
+  font-size: 21px;
+}
+
+h5, .h5 {
+  font-size: 14px;
+}
+
+h6, .h6 {
+  font-size: 12px;
+}
+
+p {
+  font-weight: 400;
+  font-size: 13px;
+  margin-bottom: 1.3em;
+}
+
+/*
+# pattern view
+** all styles in pattern view **
+*/
+.btnIcon {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  background: transparent;
+  font-size: 32px;
+  line-height: 60px;
+  text-align: center;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none !important;
+}
+.btnIcon:hover, .btnIcon.active {
+  background: #fb7904;
+}
+
+.btnPattern {
+  display: inline-block;
+  position: relative;
+  width: 230px;
+  height: 120px;
+  margin: 10px;
+  padding: 0.75em 1.5em;
+  color: #5959cf;
+  background: #fff;
+  border-top: 2px solid currentColor;
+  font-size: 13px;
+  line-height: 1.5em;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > span,
+.btnPattern > a {
+  display: block;
+  width: 100%;
+  margin: 0 0 1px 0;
+  color: #8f8f94;
+  font-weight: 400;
+  line-height: 1.5em;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > span i,
+.btnPattern > a i {
+  display: inline-block;
+  width: 16px;
+  color: #c7c7cc;
+}
+.btnPattern > .title {
+  color: inherit;
+  margin: 5px 0 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25em;
+  -webkit-transition: none 0.25s ease-in-out;
+  transition: none 0.25s ease-in-out;
+}
+.btnPattern > .info b {
+  display: inline-block;
+  width: 65px;
+}
+.btnPattern > .actions {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern > .actions:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.03);
+}
+.btnPattern .btnAction {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnPattern .btnAction, .btnPattern .btnAction:before {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none !important;
+}
+.btnPattern .btnAction.view {
+  color: #007df5;
+  background: rgba(0, 125, 245, 0.15);
+}
+.btnPattern .btnAction.copy {
+  color: #fc9436;
+  background: rgba(252, 148, 54, 0.15);
+}
+.btnPattern .btnAction.remove {
+  color: #ff3838;
+  background: rgba(255, 56, 56, 0.15);
+}
+.btnPattern .btnAction:hover {
+  color: #fff;
+}
+.btnPattern .btnAction:hover.view {
+  background: #007df5;
+}
+.btnPattern .btnAction:hover.copy {
+  background: #fc9436;
+}
+.btnPattern .btnAction:hover.remove {
+  background: #ff3838;
+}
+.btnPattern:hover {
+  color: #ff2b57;
+  padding-right: 40px;
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.btnPattern:hover .actions {
+  width: 40px;
+  opacity: 1;
+}
+.btnPattern > .tags {
+  display: block;
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #fff;
+  font-size: 10px;
+  line-height: 15px;
+  text-transform: capitalize;
+}
+.btnPattern .tag {
+  display: inline-block;
+  width: auto;
+  max-width: 60px;
+  height: 15px;
+  margin: 0;
+  padding: 0 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.btnPattern .tag.new {
+  background: #fc9436;
+}
+.btnPattern .tag.new:before {
+  content: 'New';
+}
+
+.btnNewPattern {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 30px 85px;
+  padding: 0;
+  overflow: hidden;
+  color: #c7c7cc;
+  text-decoration: none !important;
+}
+.btnNewPattern .icon,
+.btnNewPattern .label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(199, 199, 204, 0.25);
+  border-radius: 50%;
+  text-align: center;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnNewPattern .icon {
+  font-size: 56px;
+}
+.btnNewPattern .icon:before {
+  display: block;
+  line-height: 80px;
+}
+.btnNewPattern .label {
+  padding: 20px 0;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+}
+.btnNewPattern:hover {
+  color: #fff;
+}
+.btnNewPattern:hover .icon,
+.btnNewPattern:hover .label {
+  background: #fc9436;
+}
+
+/*
+# Form
+** all form styles **
+*/
+::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+:-moz-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-style: italic;
+}
+
+fieldset {
+  display: block;
+  position: relative;
+  margin: 0 0 7.5px 0;
+  padding: 0;
+  border: none;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 300;
+  margin: 0 0 5px 0;
+  padding: 0;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 0 0 7.5px 0;
+  padding: 7px;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+input:focus {
+  color: #000;
+  background: #fff;
+  outline: none;
+}
+input.ng-dirty.ng-invalid {
+  background: #fff;
+}
+input.ng-dirty.ng-invalid::-webkit-input-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+input.ng-dirty.ng-invalid:-moz-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+input.ng-dirty.ng-invalid::-moz-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+input.ng-dirty.ng-invalid:-ms-input-placeholder {
+  color: #ff3838;
+  font-style: italic;
+}
+
+select {
+  display: block;
+  width: 100%;
+  margin: 0 0 7.5px 0;
+  padding: 7px;
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+select:focus {
+  color: #000;
+  background: #fff;
+  outline: none;
+}
+
+/*
+# Sections
+** section blocks **
+*/
+.app-sec {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 15px;
+}
+
+/*
+# Effects
+Pure CSS effects, including interactive transitions and animations
+*/
+/*
+## hover flip
+An element with two faces will flip upon hover
+*/
+.hoverFlip {
+  position: relative;
+}
+.hoverFlip .face {
+  position: absolute;
+  -webkit-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.hoverFlip .face.front {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+.hoverFlip .face.back {
+  -webkit-transform: perspective(400px) rotateY(-180deg);
+  -ms-transform: perspective(400px) rotateY(-180deg);
+  transform: perspective(400px) rotateY(-180deg);
+  opacity: 0;
+}
+.hoverFlip:hover .face.front {
+  -webkit-transform: perspective(400px) rotateY(-180deg);
+  -ms-transform: perspective(400px) rotateY(-180deg);
+  transform: perspective(400px) rotateY(-180deg);
+  opacity: 0;
+}
+.hoverFlip:hover .face.back {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+
+.hoverFlip.CCW .face.front {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+.hoverFlip.CCW .face.back {
+  -webkit-transform: perspective(400px) rotateY(180deg);
+  -ms-transform: perspective(400px) rotateY(180deg);
+  transform: perspective(400px) rotateY(180deg);
+  opacity: 0;
+}
+.hoverFlip.CCW:hover .face.front {
+  -webkit-transform: perspective(400px) rotateY(180deg);
+  -ms-transform: perspective(400px) rotateY(180deg);
+  transform: perspective(400px) rotateY(180deg);
+  opacity: 0;
+}
+.hoverFlip.CCW:hover .face.back {
+  -webkit-transform: perspective(400px) rotateY(0deg);
+  -ms-transform: perspective(400px) rotateY(0deg);
+  transform: perspective(400px) rotateY(0deg);
+  opacity: 1;
+}
+
+/*
+# Animations
+** all animations/transitions **
+*/
+[ui-view].ng-enter,
+[ui-view].ng-leave {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+}
+
+.btnPattern.ng-enter {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btnPattern.ng-enter-active {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btnPattern.ng-leave {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.btnPattern.ng-leave-active {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+/*
+# App Container
+** overall app containers **
+*/
+.app,
+.app-view {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.app-view {
+  min-width: 650px;
+  overflow: hidden;
+}
+.app-view .app-pattern,
+.app-view .app-settings {
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.app-view.settingsActive .app-pattern {
+  width: calc( 100% - 300px );
+}
+.app-view.settingsActive .app-settings {
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+/*
+# dashboard view
+** all styles in dashboard view **
+*/
+.app-dash,
+[class^="app-dash-"] {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(199, 199, 204, 0.05);
+}
+
+.app-dash {
+  top: 0;
+  height: 100%;
+}
+
+.app-dash-header {
+  top: 0;
+  height: 80px;
+  color: #fff;
+  background: #fc9436;
+  z-index: 10;
+}
+.app-dash-header .logo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 0 0 -40px -50px;
+  padding: 5px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 22.5%;
+  text-align: center;
+  line-height: 90px;
+  -webkit-box-shadow: 0 6px 0px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 0px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+.app-dash-header .logo img {
+  display: block;
+  width: 90px;
+  height: 90px;
+}
+
+.app-dash-main {
+  top: 80px;
+  bottom: 0;
+  color: #000;
+  overflow: auto;
+}
+
+.app-dash-footer {
+  display: none;
+}
+
+.app-patterns-list {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 60px 10px 30px 10px;
+  letter-spacing: -0.31em;
+  text-rendering: auto;
+  text-align: left;
+  text-align: center;
+}
+.app-patterns-list, .app-patterns-list > li {
+  list-style: none;
+}
+.app-patterns-list > * {
+  display: inline-block;
+  vertical-align: top;
+  letter-spacing: normal;
+  text-rendering: auto;
+  text-align: left;
+}
+
+/*
+# pattern view
+** all styles in pattern view **
+*/
 .app-pattern,
 [class^="app-pattern-"] {
   display: block;
@@ -9,23 +672,76 @@
   padding: 0;
 }
 
-/* pattern container */
 .app-pattern {
   top: 0;
-  min-width: 1024px;
   height: 100%;
 }
 
-/* pattern sections */
-.app-pattern-editor [ui-ace] {
+.app-pattern-header {
   top: 0;
+  height: 60px;
+  color: #fff;
+  background: #fc9436;
+}
+.app-pattern-header .logo {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+}
+.app-pattern-header .logo img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}
+.app-pattern-header .heading {
+  max-width: 400px;
+  margin: 0 calc( 50% - 200px );
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.app-pattern-header .heading .title {
+  display: block;
+  height: 50px;
+}
+.app-pattern-header .heading .small {
+  display: block;
+  position: relative;
+  top: -8px;
+  font-size: 10px;
+  line-height: 10px;
+  opacity: 0.7;
+}
+.app-pattern-header .utils {
+  width: auto;
+  float: right;
+  text-align: right;
+}
+.app-pattern-header .utils:first-child {
+  float: left;
+  text-align: left;
+}
+
+.app-pattern-editor {
+  top: 60px;
+}
+.app-pattern-editor,
+.app-pattern-editor [ui-ace] {
   height: 300px;
 }
 
 .app-pattern-display {
-  top: 300px;
+  top: 360px;
   bottom: 0;
-  background: red;
   border: 0;
 }
 .app-pattern-display iframe {
@@ -36,8 +752,77 @@
   width: 100%;
   height: 100%;
   padding: 0;
-  background: yellow;
   border: 0;
+}
+
+/*
+# Settings panel
+** drawer panel for settings **
+*/
+.app-settings {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: 100;
+  color: #fff;
+  background: #fb7904;
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.app-settings .app-sec {
+  border-top: 1px solid #fc871d;
+}
+.app-settings .app-sec:first-child {
+  border-top: none;
+}
+.app-settings .heading {
+  font-weight: 300;
+  text-transform: capitalize;
+  margin: 15px 0;
+}
+.app-settings .heading:first-child {
+  margin-top: 0;
+}
+.app-settings .heading:last-child {
+  margin-bottom: 0;
+}
+.app-settings label .value {
+  display: inline-block;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+/*
+# Helpers
+** common helpers **
+*/
+.ir {
+  border: 0 !important;
+  font: 0/0 a !important;
+  text-shadow: none !important;
+  color: transparent !important;
+}
+
+.clearfix,
+.cfix {
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after,
+.cfix:before,
+.cfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after,
+.cfix:after {
+  clear: both;
 }
 
 /*# sourceMappingURL=app.css.map */

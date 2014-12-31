@@ -1,0 +1,21 @@
+
+//colors
+@import "../assets/_ios7colors.scss";
+$themeBlue: #2a9fd8;
+$invalid: $ios7Red;
+
+//typography
+$baseFontSize: 13px;
+$baseFontFamily: 'Lato', sans-serif;
+
+//transition and animations
+@import "../assets/_pennerseasings.scss";
+$transSpeed: 0.25s;
+$viewTransSpeed: 0.4s;
+$transEasing: ease-in-out;
+$perspective: 400px;
+
+//layout
+$appMinWidth: 650px;
+$settingsWidth: 300px;
+$gutterSize: 15px;

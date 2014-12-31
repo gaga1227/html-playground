@@ -1,20 +1,91 @@
 <!-- pattern container -->
-<div class="app-pattern">
+<div class="app-pattern" id="app-pattern_{{::pattern.id}}">
 	<!-- pattern editor -->
-	<div class="app-pattern-editor" id="app-pattern-editor_{{pattern.id}}">
-		<div ui-ace="{
-			useWrapMode : true,
-			showGutter: true,
-			theme:'monokai',
-			mode: 'xml',
-			onLoad: aceLoaded,
-			onChange: aceChanged
-		}"
-		ng-model="pattern.input"></div>
+	<div class="app-pattern-header">
+		<div class="utils"><!--
+		--><span class="logo" title="Pattern Playground">
+			<img src="imgs/logo.svg" alt="" width="50" height="50">
+		</span><!--
+		--><a href="#home" class="btnIcon" title="Back to main"><i class="icon ion-grid"></i></a><!--
+		--></div>
+		<div class="utils"><!--
+			--><a href="" class="btnIcon" title="Revert Updates"
+				ng-click="revert()"><i class="icon ion-ios-undo-outline"></i></a><!--
+			--><a href="" class="btnIcon" title="Save to cloud"
+				ng-click="save()"><i class="icon ion-ios-cloud-upload-outline"></i></a><!--
+			--><a href="" class="btnIcon" ng-class="{active: settingsActive}" title="Pattern Info"
+				ng-click="toggleSettings()"><i class="icon ion-ios-more-outline"></i></a><!--
+		--></div>
+		<h1 class="heading">
+			<span class="title" ng-bind="pattern.title"></span>
+			<span class="small">
+				<span ng-bind="'Updated ' + sincelastupdate"></span>
+			</span>
+		</h1>
 	</div>
-
+	<!-- pattern editor -->
+	<div class="app-pattern-editor">
+		<div ng-model="input"
+			ui-ace="{
+				useWrapMode : true,
+				showGutter: true,
+				theme:'monokai',
+				mode: 'xml',
+				onLoad: aceLoaded,
+				onChange: aceChanged
+			}"></div>
+	</div>
 	<!-- pattern display -->
 	<div class="app-pattern-display">
 		<iframe id="app-pattern-display"></iframe>
 	</div>
+</div>
+
+<!-- settings -->
+<div class="app-settings" id="app-settings_{{::pattern.id}}">
+	<!-- settings -->
+	<div class="app-sec" id="app-settings-info">
+		<h3 class="heading">Pattern Info</h3>
+		<form name="patternInfoForm">
+			<fieldset>
+				<label>Title:</label>
+				<input type="text"
+					id="app-settings-patternTitle" name="patternTitle"
+					placeholder="Please add title" required
+					ng-model="pattern.title">
+			</fieldset>
+			<fieldset>
+				<label>Repo:</label>
+				<select
+					id="app-settings-patternRepo" name="patternRepo" required
+					ng-model="pattern.repo"
+					ng-options="val.id as val.name for (key, val) in repos">
+				</select>
+			</fieldset>
+			<fieldset>
+				<label>
+					Author:
+					<span class="value" ng-bind="::pattern.author"></span>
+				</label>
+			</fieldset>
+			<fieldset>
+				<label>
+					Last Update:
+					<span class="value" ng-bind="getTimeDisplayMsg(pattern.lastupdate)"></span>
+				</label>
+			</fieldset>
+			<fieldset>
+				<label>
+					ID:
+					<span class="value" ng-bind="::pattern.id"></span>
+				</label>
+			</fieldset>
+		</form>
+	</div>
+	<!-- settings
+	<div class="app-sec" id="app-settings-comments">
+		<h3 class="heading">Comments</h3>
+		<p>TBC</p>
+	</div>
+	 -->
 </div>
