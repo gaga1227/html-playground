@@ -12,19 +12,19 @@
 }
 [ui-view].ng-enter {
 	opacity: 0;
-	@include transform( scale(0.9) );
+	// @include transform( scale(0.9) );
 }
 [ui-view].ng-enter-active {
 	opacity: 1;
-	@include transform( scale(1) );
+	// @include transform( scale(1) );
 }
 [ui-view].ng-leave {
 	opacity: 1;
-	@include transform( scale(1) );
+	// @include transform( scale(1) );
 }
 [ui-view].ng-leave-active {
 	opacity: 0;
-	@include transform( scale(1.1) );
+	// @include transform( scale(1.1) );
 }
 
 // btnPattern in dash view
