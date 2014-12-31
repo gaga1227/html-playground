@@ -1,13 +1,14 @@
 {
-  "name": "HTML_Pattern_Playground",
-  "version": "0.0.1",
-  "description": "A playground for anyone to try and play with HTML patterns",
+  "name": "html-playground",
+  "description": "A friendly environment to play with your HTML snippets",
+  "version": "0.1.0",
+  "author": "Johnny Xu",
+  "license": "MPL v2.0",
+  "homepage": "https://github.com/gaga1227/html-playground",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/gaga1227/html-playground.git"
   },
-  "author": "Johnny XU",
-  "license": "",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-uglify": "~0.4.0",
