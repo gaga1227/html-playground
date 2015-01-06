@@ -72,17 +72,6 @@
 			opacity: 0.7;
 		}
 	}
-
-	//utils
-	.utils {
-		width: auto;
-		float: right;
-		text-align: right;
-		&:first-child {
-			float: left;
-			text-align: left;
-		}
-	}
 }
 
 // editor

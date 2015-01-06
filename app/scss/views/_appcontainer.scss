@@ -42,3 +42,19 @@
 		@include transform( translateX(0) );
 	}
 }
+
+// app header universal
+// -------------------------------------------------------------------------------------------
+
+.app-header {
+	//utils
+	.utils {
+		width: auto;
+		float: right;
+		text-align: right;
+		&:first-child {
+			float: left;
+			text-align: left;
+		}
+	}
+}

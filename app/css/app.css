@@ -578,6 +578,16 @@ An element with two faces will flip upon hover
   transform: translateX(0);
 }
 
+.app-header .utils {
+  width: auto;
+  float: right;
+  text-align: right;
+}
+.app-header .utils:first-child {
+  float: left;
+  text-align: left;
+}
+
 /*
 # dashboard view
 ** all styles in dashboard view **
@@ -600,7 +610,7 @@ An element with two faces will flip upon hover
 
 .app-dash-header {
   top: 0;
-  height: 80px;
+  height: 60px;
   color: #fff;
   background: #fc9436;
   z-index: 10;
@@ -611,7 +621,7 @@ An element with two faces will flip upon hover
   left: 50%;
   width: 100px;
   height: 100px;
-  margin: 0 0 -40px -50px;
+  margin: 0 0 -60px -50px;
   padding: 5px;
   overflow: hidden;
   background: #fff;
@@ -628,20 +638,27 @@ An element with two faces will flip upon hover
 }
 
 .app-dash-main {
-  top: 80px;
+  top: 60px;
   bottom: 0;
-  color: #000;
+  padding-top: 60px;
   overflow: auto;
+  color: #000;
 }
 
 .app-dash-footer {
   display: none;
 }
 
+.app-intro {
+  width: 300px;
+  margin: 30px auto;
+  text-align: center;
+}
+
 .app-patterns-list {
   max-width: 1020px;
-  margin: 0 auto;
-  padding: 60px 10px 30px 10px;
+  margin: 30px auto;
+  padding: 0 10px;
   letter-spacing: -0.31em;
   text-rendering: auto;
   text-align: left;
@@ -720,15 +737,6 @@ An element with two faces will flip upon hover
   font-size: 10px;
   line-height: 10px;
   opacity: 0.7;
-}
-.app-pattern-header .utils {
-  width: auto;
-  float: right;
-  text-align: right;
-}
-.app-pattern-header .utils:first-child {
-  float: left;
-  text-align: left;
 }
 
 .app-pattern-editor {

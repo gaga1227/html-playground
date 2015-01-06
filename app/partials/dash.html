@@ -1,13 +1,25 @@
 <!-- dashboard container -->
 <div class="app-dash" id="app-dash">
 	<!-- dashboard header -->
-	<div class="app-dash-header">
+	<div class="app-dash-header app-header cfix">
+		<div class="utils"><!--
+		--></div>
+		<div class="utils"><!--
+		--></div>
 		<h1 class="logo" title="Pattern Playground">
 			<img src="imgs/logo.svg" alt="" width="90" height="90">
 		</h1>
 	</div>
 	<!-- dashboard main -->
 	<div class="app-dash-main">
+		<!-- login -->
+		<div class="app-intro">
+			<a href="" ng-click="login()">Login</a> | <a href="" ng-click="logout()">Logout</a>
+		</div>
+		<div class="app-user-info">
+			<p>{{user.id}}</p>
+			<p>{{user.name}}</p>
+		</div>
 		<!-- pattern list -->
 		<div class="app-patterns-list cfix">
 			<!-- pattern item -->
