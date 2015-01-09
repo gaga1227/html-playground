@@ -5,10 +5,15 @@ angular.module('playground',
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
 	$stateProvider
-		.state('home', {
+		.state('dash', {
 			url: '/',
 			templateUrl: 'partials/dash.html',
 			controller: 'DashController'
+		})
+		.state('Login', {
+			url: '/login',
+			templateUrl: 'partials/Login.html',
+			controller: 'LoginController'
 		})
 		.state('pattern', {
 			url: '/pattern/:id',

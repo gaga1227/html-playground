@@ -102,6 +102,54 @@ p {
   background: #fb7904;
 }
 
+.btnIconCircle {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  color: #c7c7cc;
+  text-decoration: none !important;
+}
+.btnIconCircle .icon,
+.btnIconCircle .label {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgba(199, 199, 204, 0.25);
+  border-radius: 50%;
+  text-align: center;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.btnIconCircle .icon {
+  font-size: 56px;
+}
+.btnIconCircle .icon:before {
+  display: block;
+  line-height: 80px;
+}
+.btnIconCircle .label {
+  padding: 20px 0;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 600;
+}
+.btnIconCircle:hover {
+  color: #fff;
+}
+.btnIconCircle:hover .icon,
+.btnIconCircle:hover .label {
+  background: #fc9436;
+}
+
 .btnPattern {
   display: inline-block;
   position: relative;
@@ -256,54 +304,6 @@ p {
 }
 .btnPattern .tag.new:before {
   content: 'New';
-}
-
-.btnNewPattern {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-  margin: 30px 85px;
-  padding: 0;
-  overflow: hidden;
-  color: #c7c7cc;
-  text-decoration: none !important;
-}
-.btnNewPattern .icon,
-.btnNewPattern .label {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: rgba(199, 199, 204, 0.25);
-  border-radius: 50%;
-  text-align: center;
-  -webkit-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
-}
-.btnNewPattern .icon {
-  font-size: 56px;
-}
-.btnNewPattern .icon:before {
-  display: block;
-  line-height: 80px;
-}
-.btnNewPattern .label {
-  padding: 20px 0;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 600;
-}
-.btnNewPattern:hover {
-  color: #fff;
-}
-.btnNewPattern:hover .icon,
-.btnNewPattern:hover .label {
-  background: #fc9436;
 }
 
 /*
@@ -588,6 +588,11 @@ An element with two faces will flip upon hover
   text-align: left;
 }
 
+.app-content-main {
+  max-width: 1020px;
+  margin: 30px auto;
+}
+
 /*
 # dashboard view
 ** all styles in dashboard view **
@@ -656,9 +661,7 @@ An element with two faces will flip upon hover
 }
 
 .app-patterns-list {
-  max-width: 1020px;
-  margin: 30px auto;
-  padding: 0 10px;
+  padding: 10px;
   letter-spacing: -0.31em;
   text-rendering: auto;
   text-align: left;
@@ -673,6 +676,24 @@ An element with two faces will flip upon hover
   letter-spacing: normal;
   text-rendering: auto;
   text-align: left;
+}
+
+.app-actions {
+  padding: 0;
+  text-align: center;
+}
+
+.app-msgs {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.app-msg {
+  max-width: 400px;
+  margin: 1em auto;
+  padding: 1em 0.5em;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px dashed #c7c7cc;
 }
 
 /*

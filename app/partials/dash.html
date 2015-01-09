@@ -12,49 +12,63 @@
 	</div>
 	<!-- dashboard main -->
 	<div class="app-dash-main">
-		<!-- login -->
-		<div class="app-intro">
-			<a href="" ng-click="login()">Login</a> | <a href="" ng-click="logout()">Logout</a>
-		</div>
-		<div class="app-user-info">
-			<p>{{user.id}}</p>
-			<p>{{user.name}}</p>
-		</div>
-		<!-- pattern list -->
-		<div class="app-patterns-list cfix">
-			<!-- pattern item -->
-			<div class="btnPattern"
-				ng-repeat="pattern in patterns|objToArr|orderBy:'lastupdate':true track by pattern.id">
-				<div class="tags">
-					<span class="tag new" ng-if="isNewPattern(pattern.lastupdate)"></span>
-				</div>
-				<a class="title" ng-bind="pattern.title" href="#pattern/{{::pattern.id}}"></a>
-				<span class="info repo"><b>Repo</b><span ng-bind="::pattern.repo"></span></span></span>
-				<span class="info author"><b>Author</b><span ng-bind="::pattern.author"></span></span>
-				<span class="info date"><b>Updated</b><span ng-bind="::pattern.lastupdate|toDisplayTime"></span></span>
-				<div class="actions">
-					<a class="btnAction view ion-eye" title="View/Edit"
-						href="#pattern/{{::pattern.id}}"></a>
-					<a class="btnAction copy ion-fork-repo" title="Duplicate"
-						href="" ng-click="copyPattern(pattern.id)"></a>
-					<a class="btnAction remove ion-trash-a" title="Remove"
-						href="" ng-click="deletePattern(pattern.id)"></a>
+		<!-- main content -->
+		<div class="app-content-main">
+			<!-- pattern list -->
+			<div class="app-patterns-list cfix">
+				<!-- pattern item -->
+				<div class="btnPattern"
+					ng-repeat="pattern in patterns|objToArr|orderBy:'lastupdate':true track by pattern.id"
+					ng-if="pattern.author != user.name">
+					<div class="tags">
+						<span class="tag new" ng-if="isNewPattern(pattern.lastupdate)"></span>
+					</div>
+					<a class="title" ng-bind="pattern.title" href="#pattern/{{::pattern.id}}"></a>
+					<span class="info repo"><b>Repo</b><span ng-bind="::pattern.repo"></span></span></span>
+					<span class="info author"><b>Author</b><span ng-bind="::pattern.author"></span></span>
+					<span class="info date"><b>Updated</b><span ng-bind="::pattern.lastupdate|toDisplayTime"></span></span>
+					<div class="actions">
+						<a class="btnAction view ion-eye" title="View/Edit"
+							href="#pattern/{{::pattern.id}}"></a>
+						<a class="btnAction copy ion-fork-repo" title="Duplicate"
+							href="" ng-click="copyPattern(pattern.id)"></a>
+						<a class="btnAction remove ion-trash-a" title="Remove"
+							href="" ng-click="deletePattern(pattern.id)"></a>
+					</div>
 				</div>
 			</div>
-			<!-- button new pattern -->
-			<a class="btnNewPattern hoverFlip" href="" ng-click="newPattern()">
-				<i class="icon ion-plus-round face front"></i>
-				<span class="label face back">New Pattern</span>
-			</a>
+			<!-- messages -->
+			<div class="app-msgs">
+				<div class="app-msg">
+					<span><b>Hint:</b> You are currently not logged in and can only see public patterns. Log in as a user to enable your private patterns.</span>
+				</div>
+			</div>
+			<!-- actions -->
+			<div class="app-actions">
+				<!-- new pattern -->
+				<a class="btnIconCircle hoverFlip" href=""
+					ng-click="newPattern()">
+					<i class="icon ion-plus-round face front"></i>
+					<span class="label face back">New Pattern</span>
+				</a>
+				<!-- login google -->
+				<a class="btnIconCircle hoverFlip" href=""
+					ng-click="login('google')"
+					ng-hide="user.id">
+					<i class="icon ion-social-google face front"></i>
+					<span class="label face back">Login via Google</span>
+				</a>
+				<!-- logout -->
+				<a class="btnIconCircle hoverFlip" href=""
+					ng-click="logout()"
+					ng-show="user.id">
+					<i class="icon ion-log-out face front"></i>
+					<span class="label face back">Logout</span>
+				</a>
+			</div>
 		</div>
 	</div>
-	<!-- dashboard aside
-	<div class="app-dash-aside">
-		<h3>aside</h3>
-	</div>
-	-->
 	<!-- dashboard footer -->
 	<div class="app-dash-footer">
-
 	</div>
 </div>

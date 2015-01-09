@@ -84,11 +84,29 @@
 	}
 
 	//self
-	max-width: 1020px;
-	margin: 30px auto;
-	padding: 0 10px;
+	padding: 10px;
 
 	//layout
 	@include grid-inline-row();
 	text-align: center;
+}
+
+// actions
+.app-actions {
+	padding: 0;
+	text-align: center;
+}
+
+// messages
+.app-msgs {
+	padding: 20px 0;
+	text-align: center;
+}
+// message item
+.app-msg {
+	max-width: 400px;
+	margin: 1em auto;
+	padding: 1em 0.5em;
+	background: rgba(255,255,255,0.75);
+	border: 1px dashed $ios7Silver;
 }
