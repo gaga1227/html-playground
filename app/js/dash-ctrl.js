@@ -1,7 +1,7 @@
 angular.module('playground')
 .controller('DashController', [
-	'$scope', '$location', 'patternService', 'staticFactory', 'utilsFactory',
-	function($scope, $location, patternService, staticFactory, utilsFactory) {
+	'$scope', '$location', '$timeout', 'patternService', 'staticFactory', 'utilsFactory',
+	function($scope, $location, $timeout, patternService, staticFactory, utilsFactory) {
 
 	// vars and utils
 	// -------------------------------------------------------------------------------------------
@@ -160,20 +160,24 @@ angular.module('playground')
 	// onAuth handler
 	ref.onAuth(function(authData){
 		if (authData == null) {
-			console.log("User logged out");
+			console.log("[dash.onAuth]: User logged out");
 			$scope.user = {
 				id: undefined,
 				name: undefined,
 				picture: undefined
 			};
 		} else {
-			console.log("User logged in: ", authData);
+			console.log("[dash.onAuth]: User logged in");
 			var userdata = authData[authData.provider];
-			$scope.user = {
-				id: authData.uid,
-				name: userdata.displayName,
-				picture: userdata.cachedUserProfile.picture
-			};
+			//use $timeout to defer and invoke function with $apply block
+			//without causing an '$digest already in progress' error
+			$timeout(function(){
+				$scope.user = {
+					id: authData.uid,
+					name: userdata.displayName,
+					picture: userdata.cachedUserProfile.picture
+				};
+			});
 		}
 	});
 
