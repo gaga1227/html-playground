@@ -30,9 +30,16 @@
 				<!-- pattern item -->
 				<div class="btnPattern"
 					ng-repeat="pattern in patterns|objToArr|orderBy:'lastupdate':true track by pattern.id"
-					ng-if="pattern.author != user.name">
-					<div class="tags">
-						<span class="tag new" ng-if="isNewPattern(pattern.lastupdate)"></span>
+					ng-if="isPatternVisible(pattern)">
+					<div class="tags cfix">
+						<span class="tag grn"
+							title="This pattern is new"
+							ng-if="isNewPattern(pattern.lastupdate)"
+							><i class="ion-egg"></i></span>
+						<span class="tag blu"
+							title="This pattern is private"
+							ng-if="!pattern.isPublic"
+							><i class="ion-locked"></i></span>
 					</div>
 					<a class="title" ng-bind="pattern.title" href="#pattern/{{::pattern.id}}"></a>
 					<span class="info repo"><b>Repo</b><span ng-bind="::pattern.repo"></span></span></span>
@@ -49,9 +56,9 @@
 				</div>
 			</div>
 			<!-- messages -->
-			<div class="app-msgs" ng-hide="user.id">
+			<div class="app-msgs" ng-if="!user.id">
 				<div class="app-msg">
-					<span><b>Hint:</b> You are currently not logged in and can only see public patterns. Log in as a user to enable your private patterns.</span>
+					<span><b>Hint:</b> You are currently not logged in and can only see public patterns. Log in as a user to create your private patterns.</span>
 				</div>
 			</div>
 		</div>

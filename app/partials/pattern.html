@@ -70,6 +70,13 @@
 			</fieldset>
 			<fieldset>
 				<label>
+					Visible to:
+					<span class="value" ng-if="pattern.isPublic">Public</span>
+					<span class="value" ng-if="!pattern.isPublic">Private</span>
+				</label>
+			</fieldset>
+			<fieldset>
+				<label>
 					Last Update:
 					<span class="value" ng-bind="getTimeDisplayMsg(pattern.lastupdate)"></span>
 				</label>

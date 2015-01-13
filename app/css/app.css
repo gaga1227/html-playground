@@ -291,19 +291,46 @@ p {
 .btnPattern .tag {
   display: inline-block;
   width: auto;
+  min-width: 15px;
   max-width: 60px;
   height: 15px;
   margin: 0;
   padding: 0 4px;
+  float: left;
+  text-align: center;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.btnPattern .tag.new {
+.btnPattern .tag.red {
+  background: #ff3838;
+}
+.btnPattern .tag.org {
   background: #fc9436;
 }
-.btnPattern .tag.new:before {
-  content: 'New';
+.btnPattern .tag.ylw {
+  background: #ffc947;
+}
+.btnPattern .tag.grn {
+  background: #45d975;
+}
+.btnPattern .tag.teal {
+  background: #2eabd6;
+}
+.btnPattern .tag.blu {
+  background: #007df5;
+}
+.btnPattern .tag.ppl {
+  background: #5959cf;
+}
+.btnPattern .tag.pnk {
+  background: #ff2b57;
+}
+.btnPattern .tag.gry {
+  background: #8f8f94;
+}
+.btnPattern .tag.slvr {
+  background: #c7c7cc;
 }
 
 /*
@@ -540,6 +567,27 @@ An element with two faces will flip upon hover
   transform: scale(0);
   -webkit-transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
   transition: all 0.4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.app-msgs {
+  -webkit-transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.app-msgs.ng-enter {
+  opacity: 0;
+}
+
+.app-msgs.ng-enter-active {
+  opacity: 1;
+}
+
+.app-msgs.ng-leave {
+  opacity: 1;
+}
+
+.app-msgs.ng-leave-active {
+  opacity: 0;
 }
 
 /*

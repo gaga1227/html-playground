@@ -242,16 +242,25 @@
 	.tag {
 		display: inline-block;
 		width: auto;
+		min-width: 15px;
 		max-width: 60px;
 		height: 15px;
 		margin: 0;
 		padding: 0 4px;
+		float: left;
+		text-align: center;
 		@include text-truncate();
-		&.new {
-			background: $ios7Orange;
-			&:before {
-				content: 'New';
-			}
-		}
+
+		//colours
+		&.red { background: $ios7Red; }
+		&.org { background: $ios7Orange; }
+		&.ylw { background: $ios7Yellow; }
+		&.grn { background: $ios7Green; }
+		&.teal { background: $ios7Teal; }
+		&.blu { background: $ios7Blue; }
+		&.ppl { background: $ios7Purple; }
+		&.pnk { background: $ios7Pink; }
+		&.gry { background: $ios7Gray; }
+		&.slvr { background: $ios7Silver; }
 	}
 }

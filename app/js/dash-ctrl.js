@@ -43,6 +43,16 @@ angular.module('playground')
 			: false;
 	};
 
+	//check if pattern is visible to current visitor
+	$scope.isPatternVisible = function(pattern){
+		var visible = false;
+		//pattern is visible if isPublic or created by pattern.author
+		if (pattern.isPublic || pattern.author == $scope.user.name) {
+			visible = true;
+		}
+		return visible;
+	}
+
 	// view methods
 	// -------------------------------------------------------------------------------------------
 
@@ -66,6 +76,10 @@ angular.module('playground')
 			var newPatternObj = $.extend( {}, staticFactory.tmplNewPattern );
 			newPatternObj.id = newPatternID;
 			newPatternObj.lastupdate = new Date().getTime();
+			if ($scope.user && $scope.user.name) {
+				newPatternObj.author = $scope.user.name;
+				newPatternObj.isPublic = false;
+			}
 
 			//save duplicate pattern data and route to new location
 			var request = patternService.putPattern(newPatternID, newPatternObj);

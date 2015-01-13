@@ -46,3 +46,22 @@
 	@include transform( scale(0) );
 	@include transition(all, $viewTransSpeed, $easeInBack);
 }
+
+// app-msgs in dash view
+// -------------------------------------------------------------------------------------------
+
+.app-msgs {
+	@include transition(opacity, $viewTransSpeed, $transEasing);
+}
+.app-msgs.ng-enter {
+	opacity: 0;
+}
+.app-msgs.ng-enter-active {
+	opacity: 1;
+}
+.app-msgs.ng-leave {
+	opacity: 1;
+}
+.app-msgs.ng-leave-active {
+	opacity: 0;
+}
