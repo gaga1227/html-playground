@@ -587,6 +587,12 @@ An element with two faces will flip upon hover
   float: left;
   text-align: left;
 }
+.app-header .profile {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
 
 .app-content-main {
   max-width: 1020px;

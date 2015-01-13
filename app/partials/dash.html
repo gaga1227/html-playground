@@ -3,11 +3,22 @@
 	<!-- dashboard header -->
 	<div class="app-dash-header app-header cfix">
 		<div class="utils"><!--
+		--><a href="" class="btnIcon" title="Add new pattern"
+			ng-click="newPattern()"><i class="icon ion-android-add"></i></a><!--
 		--></div>
 		<div class="utils"><!--
+		--><a href="" class="btnIcon" title="Sign in"
+			ng-hide="user.id"
+			ng-click="login('google')"><i class="icon ion-person"></i></a><!--
+		--><a href="" class="btnIcon" title="Sign out"
+			ng-show="user.id"
+			ng-click="logout()">
+				<img class="profile" alt="User profile picture"
+					ng-src="{{::user.picture}}">
+			</a><!--
 		--></div>
 		<h1 class="logo" title="Pattern Playground">
-			<img src="imgs/logo.svg" alt="" width="90" height="90">
+			<img src="imgs/logo.svg" alt="Playground brand logo">
 		</h1>
 	</div>
 	<!-- dashboard main -->
@@ -38,33 +49,10 @@
 				</div>
 			</div>
 			<!-- messages -->
-			<div class="app-msgs">
+			<div class="app-msgs" ng-hide="user.id">
 				<div class="app-msg">
 					<span><b>Hint:</b> You are currently not logged in and can only see public patterns. Log in as a user to enable your private patterns.</span>
 				</div>
-			</div>
-			<!-- actions -->
-			<div class="app-actions">
-				<!-- new pattern -->
-				<a class="btnIconCircle hoverFlip" href=""
-					ng-click="newPattern()">
-					<i class="icon ion-plus-round face front"></i>
-					<span class="label face back">New Pattern</span>
-				</a>
-				<!-- login google -->
-				<a class="btnIconCircle hoverFlip" href=""
-					ng-click="login('google')"
-					ng-hide="user.id">
-					<i class="icon ion-social-google face front"></i>
-					<span class="label face back">Login via Google</span>
-				</a>
-				<!-- logout -->
-				<a class="btnIconCircle hoverFlip" href=""
-					ng-click="logout()"
-					ng-show="user.id">
-					<i class="icon ion-log-out face front"></i>
-					<span class="label face back">Logout</span>
-				</a>
 			</div>
 		</div>
 	</div>
