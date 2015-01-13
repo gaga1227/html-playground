@@ -122,6 +122,10 @@ angular.module('playground')
 			newPatternObj.id = newPatternID;
 			newPatternObj.title = 'Copy of ' + newPatternObj.title;
 			newPatternObj.lastupdate = new Date().getTime();
+			if ($scope.user && $scope.user.name) {
+				newPatternObj.author = $scope.user.name;
+				newPatternObj.isPublic = false;
+			}
 
 			//save duplicate pattern data and route to new location
 			var request = patternService.putPattern(newPatternID, newPatternObj);
