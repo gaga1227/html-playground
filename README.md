@@ -10,3 +10,6 @@
 
 ###Demo:
 http://gaga-graphics.com/html-playground/app/
+
+###Version:
+0.1.0
