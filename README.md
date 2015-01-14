@@ -9,7 +9,7 @@
 * You can choose from popular CSS frameworks like [Bootstrap](http://getbootstrap.com/css/), [Foundation](http://foundation.zurb.com/docs/), and built-in private repositories.
 
 ###Demo:
-http://gaga-graphics.com/html-playground/app/
+https://patternplayground.firebaseapp.com/
 
 ###Version:
 0.1.0
