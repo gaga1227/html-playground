@@ -1,4 +1,4 @@
-<div><img src="http://gaga-graphics.com/html-playground/app/imgs/logo.svg" width="200" height="200" alt="Playground"></div>
+<div><img src="https://patternplayground.firebaseapp.com/imgs/logo.svg" width="200" height="200" alt="Playground"></div>
 #Welcome to Pattern Playground!
 **The Pattern Playground provides you a friendly environment to play with your HTML snippets with different CSS repositories.**
 
