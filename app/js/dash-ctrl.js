@@ -1,7 +1,7 @@
 angular.module('playground')
 .controller('DashController', [
-	'$scope', '$location', '$timeout', 'patternService', 'staticFactory', 'utilsFactory',
-	function($scope, $location, $timeout, patternService, staticFactory, utilsFactory) {
+	'$scope', '$location', '$timeout', 'authService', 'patternService', 'staticFactory', 'utilsFactory',
+	function($scope, $location, $timeout, authService, patternService, staticFactory, utilsFactory) {
 
 	// vars and utils
 	// -------------------------------------------------------------------------------------------
@@ -169,50 +169,43 @@ angular.module('playground')
 		}
 	};
 
-	// User auth
+	// auth methods
 	// -------------------------------------------------------------------------------------------
 
-	// firebase ref
-	var ref = new Firebase("https://patternplayground.firebaseio.com");
-
-	// onAuth handler
-	ref.onAuth(function(authData){
-		if (authData == null) {
-			console.log("[dash.onAuth]: User logged out");
+	// login
+	$scope.login = function(provider){
+		authService.login(provider);
+	}
+	// logout
+	$scope.logout = function(){
+		authService.logout();
+	}
+	// updateUserData
+	$scope.updateUserData = function(){
+		if (authService.authData == null) {
+			console.log("[dash.updateUserData]: Update user info to null");
 			$scope.user = {
 				id: undefined,
 				name: undefined,
 				picture: undefined
 			};
 		} else {
-			console.log("[dash.onAuth]: User logged in");
-			var userdata = authData[authData.provider];
+			console.log("[dash.updateUserData]: Update to logged-in user info");
+			var userdata = authService.authData[authService.authData.provider];
 			//use $timeout to defer and invoke function with $apply block
 			//without causing an '$digest already in progress' error
 			$timeout(function(){
 				$scope.user = {
-					id: authData.uid,
+					id: authService.authData.uid,
 					name: userdata.displayName,
 					picture: userdata.cachedUserProfile.picture
 				};
 			});
 		}
-	});
+	}
 
-	// login
-	$scope.login = function(provider){
-		if (!provider) {
-			console.log('[dash.login]: Invalid login provider token!');
-			return false;
-		}
-		ref.authWithOAuthPopup(provider, function(error, authData) {
-			if (error) {
-				console.log('[dash.login]: Login Failed!', error);
-			}
-		});
-	}
-	// logout
-	$scope.logout = function(){
-		ref.unauth();
-	}
+	// onAuth handler
+	authService.ref.onAuth(function(authData){
+		$scope.updateUserData();
+	});
 }]);

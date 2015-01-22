@@ -174,6 +174,39 @@ angular.module('playground')
 	return utils;
 }])
 
+// user auth service
+// -------------------------------------------------------------------------------------------
+.service('authService', ['staticFactory', function(staticFactory) {
+	//properties
+	this.ref = new Firebase(staticFactory.webServiceURL);
+	//methods
+	this.login = function(provider) {
+		if (!provider) {
+			console.log('[authService.login]: Invalid login provider token!');
+			return false;
+		}
+		this.ref.authWithOAuthPopup(provider, function(error, authData) {
+			if (error) {
+				console.log('[authService.login]: Login Failed!', error);
+			}
+		});
+	};
+	this.logout = function(){
+		this.ref.unauth();
+	}
+
+	//onAuth handler
+	var _this = this;
+	this.ref.onAuth(function(authData){
+		if (authData == null) {
+			console.log("[authService.onAuth]: User logged out");
+		} else {
+			console.log("[authService.onAuth]: User logged in");
+		}
+		_this.authData = authData;
+	});
+}])
+
 // repo service
 // -------------------------------------------------------------------------------------------
 .service('repoService', ['staticFactory', '$http', function(staticFactory, $http) {
