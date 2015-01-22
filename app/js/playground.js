@@ -10,11 +10,6 @@ angular.module('playground',
 			templateUrl: 'partials/dash.html',
 			controller: 'DashController'
 		})
-		.state('Login', {
-			url: '/login',
-			templateUrl: 'partials/Login.html',
-			controller: 'LoginController'
-		})
 		.state('pattern', {
 			url: '/pattern/:id',
 			templateUrl: 'partials/pattern.html',
