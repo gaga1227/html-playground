@@ -91,6 +91,7 @@ angular.module('playground')
 
 		//format time point into display text
 		getDisplayTime: function(time) {
+			if (time == undefined) return false;
 			if (new Date(time) == 'Invalid Date') {
 				console.log('[services.getDisplayTime]: Invalid Date');
 				return false;
