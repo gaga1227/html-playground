@@ -51,14 +51,13 @@ input {
 		@include placeholder( $invalid, italic, true );
 	}
 
-	//checkbox
-	&[type="checkbox"] {
-
-	}
-
-	//radio
+	//checkbox/radio
+	&[type="checkbox"],
 	&[type="radio"] {
-
+		display: inline-block;
+		width: auto;
+		vertical-align: middle;
+		vertical-align: -webkit-baseline-middle;
 	}
 }
 

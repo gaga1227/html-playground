@@ -1,6 +1,7 @@
 angular.module('playground')
 
 // static factory
+// -------------------------------------------------------------------------------------------
 .factory('staticFactory', [function(){
 	var statics = {
 		//UI classes
@@ -60,10 +61,36 @@ angular.module('playground')
 	return statics;
 }])
 
-//utils factory
+// frame utils factory (used in pattern frame only)
 // -------------------------------------------------------------------------------------------
-.factory('utilsFactory', ['staticFactory', function(staticFactory){
+.factory('frameUtilsFactory', ['staticFactory', function(staticFactory){
+	var frameUtils = {
+		//ref to frame document
+		_document: undefined,
+
+		//toggle css repo file in display frame
+		toggleCSSFile: function(idx){
+			if (!this._document) return false;
+			var styleSheet = this._document.styleSheets[idx];
+			if (styleSheet) {
+				styleSheet.disabled = !styleSheet.disabled;
+				console.log('[frameUtilsFactory.toggleCSSFile]: Toggled styleSheet: ', styleSheet.href);
+			} else {
+				console.log('[frameUtilsFactory.toggleCSSFile]: Invalid styleSheet target!');
+			}
+		}
+	};
+
+	return frameUtils;
+}])
+
+// utils factory
+// -------------------------------------------------------------------------------------------
+.factory('utilsFactory', ['staticFactory', 'frameUtilsFactory', function(staticFactory, frameUtilsFactory){
 	var utils = {
+		//display frame utils
+		frameUtils: frameUtilsFactory,
+
 		//unique ID for pattern
 		generateUID: function() {
 			return ("000000" + (Math.random()*Math.pow(36,6) << 0).toString(36)).slice(-6);

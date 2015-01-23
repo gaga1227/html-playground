@@ -410,6 +410,12 @@ input.ng-dirty.ng-invalid:-ms-input-placeholder {
   color: #ff3838;
   font-style: italic;
 }
+input[type="checkbox"], input[type="radio"] {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+  vertical-align: -webkit-baseline-middle;
+}
 
 select {
   display: block;

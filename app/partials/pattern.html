@@ -43,7 +43,7 @@
 
 <!-- settings -->
 <div class="app-settings" id="app-settings_{{::pattern.id}}">
-	<!-- settings -->
+	<!-- infp -->
 	<div class="app-sec" id="app-settings-info">
 		<h3 class="heading">Pattern Info</h3>
 		<form name="patternInfoForm">
@@ -85,6 +85,21 @@
 				<label>
 					ID:
 					<span class="value" ng-bind="::pattern.id"></span>
+				</label>
+			</fieldset>
+		</form>
+	</div>
+	<!-- repo files -->
+	<div class="app-sec" id="app-settings-repo-files">
+		<h3 class="heading">Repo Files</h3>
+		<form name="patternInfoForm" style="max-height:300px; overflow:auto;">
+			<fieldset ng-repeat="file in repo.css">
+				<label>
+					<input type="checkbox"
+					id="app-settings-repo-css_{{::file.filename}}" name="repo-css_{{::file.filename}}"
+					ng-model="file.disabled"
+					ng-change="toggleRepoFile($index)">
+					<span ng-bind="::file.filename + '.css'"></span>
 				</label>
 			</fieldset>
 		</form>

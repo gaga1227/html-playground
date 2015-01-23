@@ -6,6 +6,22 @@ angular.module('playground')
 	// vars and utils
 	// -------------------------------------------------------------------------------------------
 
+	// adding frame utils to display frame
+	var patternFrameUtils = (function(){
+		// find pattern display frame
+		var displayFrame = document.getElementById('app-pattern-display');
+		if (displayFrame) {
+			//pass in frame document obj
+			utilsFactory.frameUtils._document = displayFrame.contentWindow.document;
+			//inject frame utils obj into frame contentWindow
+			displayFrame.contentWindow._UTILS = utilsFactory.frameUtils;
+			//return injected frame utils ref
+			return displayFrame.contentWindow._UTILS;
+		} else {
+			console.log('[pattern.displayFrame]: Display frame not found!');
+		}
+	})();
+
 	// check if editor's html is updated compared to saved html in model
 	var isHtmlUpdated = function(){
 		//input syntax error handling
@@ -155,6 +171,11 @@ angular.module('playground')
 	//convert time to display msg
 	$scope.getTimeDisplayMsg = function(time){
 		return utilsFactory.getDisplayTime(time);
+	}
+
+	//toggle injected repo file
+	$scope.toggleRepoFile = function(idx){
+		patternFrameUtils.toggleCSSFile(idx);
 	}
 
 	// state params
