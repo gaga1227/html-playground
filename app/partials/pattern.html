@@ -96,9 +96,10 @@
 			<fieldset ng-repeat="file in repo.css">
 				<label>
 					<input type="checkbox"
-					id="app-settings-repo-css_{{::file.filename}}" name="repo-css_{{::file.filename}}"
-					ng-model="file.disabled"
-					ng-change="toggleRepoFile($index)">
+						id="app-settings-repo-css_{{::file.filename}}"
+						name="repo-css_{{::file.filename}}"
+						ng-model="file.disabled"
+						ng-change="toggleRepoFile($index)">
 					<span ng-bind="::file.filename + '.css'"></span>
 				</label>
 			</fieldset>
